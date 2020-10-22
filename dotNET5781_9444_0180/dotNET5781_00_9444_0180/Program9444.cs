@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNET5781_00_9444_0180
 {
-    partial class Program
+    partial class Program0180
     {
         static void Main(string[] args)
         {
