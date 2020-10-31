@@ -1,15 +1,21 @@
 ﻿using System;
 
-public class Class1
+public class Buss
 {
-	public Class1()
+	public Buss(string license, string startdate)
 	{
+		licenseNum = license;
+        startDate = startdate;
+		mileage = 0;
+		fuelMileage = 0;
+		thisMileage = 0;
 	}
-	string licenseNum;
-	string startDate;
-	int mileage;
-	int fuelMileage;
-	int thisMileage;
+	public string licenseNum;
+	public string startDate;
+	public int mileage;// the main mileage
+	public int fuelMileage;// counter how much mileage we pass from the last refeul
+	public int thisMileage;// counter from the last treatment
+
 	bool proper()
     {
 		if (thisMileage < 20000)
