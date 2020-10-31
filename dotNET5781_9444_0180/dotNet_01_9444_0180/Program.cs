@@ -8,11 +8,13 @@ namespace dotNet_01_9444_0180
 {
     class Program
     {
+        public static Random r = new Random();
+       
         static void Main(string[] args)
         {
 
-            BussList b1;
-            Buss b;
+             BussList b1;
+            Buss* b;
             char ch;
             string License;
             string startnum;
@@ -36,13 +38,16 @@ namespace dotNet_01_9444_0180
                         b1.addNewBuss(License, startnum);
                         break;
                     case 'b':
+
                         Console.WriteLine("Enter the license number:");
                         License = System.Console.ReadLine();
-                        Random r = new random();
                         r.Next(0, 1200);
 
                         break;
                     case 'c':
+                        Console.WriteLine("Enter the license number:");
+                        License = System.Console.ReadLine();
+                       b= b1.find(License);
                         break;
                     case 'd':
                         break;
