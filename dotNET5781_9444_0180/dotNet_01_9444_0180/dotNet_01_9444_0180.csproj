@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9AAEB37-64FB-4622-A320-7262173F98D7}</ProjectGuid>
+    <ProjectGuid>{48574C30-A753-4B16-A1CD-FAEF6F78AEBD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>dotNet5781_01_9444_0180</RootNamespace>
-    <AssemblyName>dotNet5781_01_9444_0180</AssemblyName>
+    <RootNamespace>dotNet_01_9444_0180</RootNamespace>
+    <AssemblyName>dotNet_01_9444_0180</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buss.cs" />
+    <Compile Include="BussList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

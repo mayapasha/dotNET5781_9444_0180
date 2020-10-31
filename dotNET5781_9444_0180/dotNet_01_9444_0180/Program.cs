@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace dotNet5781_01_9444_0180
+namespace dotNet_01_9444_0180
 {
-    
     class Program
     {
         static void Main(string[] args)
@@ -26,22 +24,22 @@ namespace dotNet5781_01_9444_0180
 
             do
             {
-                ch= (char)System.Console.Read();
+                ch = (char)System.Console.Read();
 
                 switch (ch)
                 {
                     case 'a':
-                    Console.WriteLine("Enter the license number:");
-                    License=System.Console.ReadLine();
-                    Console.WriteLine("Enter the starting date of the buss:");
-                    startnum=System.Console.ReadLine();
-                    b1.addNewBuss(License,startnum);
+                        Console.WriteLine("Enter the license number:");
+                        License = System.Console.ReadLine();
+                        Console.WriteLine("Enter the starting date of the buss:");
+                        startnum = System.Console.ReadLine();
+                        b1.addNewBuss(License, startnum);
                         break;
                     case 'b':
                         Console.WriteLine("Enter the license number:");
-                    License=System.Console.ReadLine();
+                        License = System.Console.ReadLine();
                         Random r = new random();
-                       r.Next(0,1200);
+                        r.Next(0, 1200);
 
                         break;
                     case 'c':
@@ -55,7 +53,7 @@ namespace dotNet5781_01_9444_0180
                         break;
                 }
             } while (ch != 'e');
-           
+
 
         }
     }
