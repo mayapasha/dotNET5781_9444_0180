@@ -28,7 +28,7 @@ namespace dotNet_01_9444_0180
 			FuelMileage = 0;
 			ThisMileage = 0;
 		}
-		public bool proper()
+		public bool Prepare()
 		{
 			DateTime today = DateTime.Now;
 			if (ThisMileage < 20000 &&  today.AddYears(-1)<= DateOfTreatment )
@@ -47,7 +47,7 @@ namespace dotNet_01_9444_0180
 		{
 			if (FuelMileage + val > 1200)//if the buss need fuel for the drive
 				return false;
-			else if (proper() == false)//if the buss not preper for drive
+			else if (Prepare() == false)//if the buss not preper for drive
 				return false;
 			else
 			{

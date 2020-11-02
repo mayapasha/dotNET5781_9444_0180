@@ -17,11 +17,12 @@ namespace dotNet_01_9444_0180
             int val;
             BussList b1 = new BussList();
             Buss b;
-            char ch;
+          
             //string License;
             string startnum;
-
-
+            string License;
+            string ch;
+            bool flag=true;
             do
             {
                 Console.WriteLine("a: to add a bus");
@@ -29,22 +30,34 @@ namespace dotNet_01_9444_0180
                 Console.WriteLine("c: to refulling or give Treatment");
                 Console.WriteLine("d: to see the this Mileage");
                 Console.WriteLine("e: to exit");
-                ch = (char)System.Console.Read();
+                ch = Console.ReadLine();
 
                 switch (ch)
                 {
-                    case 'a':
-                        Console.WriteLine("Enter the license number:");
-                        string License = Console.ReadLine();
-                        Console.WriteLine("Enter the starting date of the buss:");
-                        startnum = Console.ReadLine();
-                        DateTime.TryParse(startnum, out date);
+                    case "a":
+                        do {
+                            Console.WriteLine("Enter the license number:");
+                            License = Console.ReadLine();
+                            Console.WriteLine("Enter the starting date of the buss:");
+                            startnum = Console.ReadLine();
+                            DateTime.TryParse(startnum, out date);
+                            if (date.Year >= 2018 && License.Length != 10 || date.Year < 2018 && License.Length != 9)
+                            {
+                                Console.WriteLine("ERROR");
+                                flag = false;
+                            }
+                            else
+                            {
+                                flag = true;
+                            }
+                        } while (flag == false);
                         b1.AddNewBuss(License, date);
                         break;
-                    case 'b':
+                    case "b":
                         Console.WriteLine("Enter the license number:");
                         License = System.Console.ReadLine();
                         val = r.Next(0, 1200);
+                        Console.WriteLine("Travel length:"+val);
                         b = b1.FindBuss(License);//searching for the chosen buss 
                         if (b != null)// the buss not in the list
                         {
@@ -56,23 +69,22 @@ namespace dotNet_01_9444_0180
                         else
                             Console.WriteLine("Could not be found");
                         break;
-                    case 'c':
+                    case "c":
                         Console.WriteLine("Enter the license number:");
                         License = System.Console.ReadLine();
                         b = b1.FindBuss(License);
                         if (b != null)
                         {
-                            Console.WriteLine("enter 1: for treatment");
-                            Console.WriteLine("enter 2: to refuel");
-                            int choise;
-                            choise = System.Console.Read();
+                            Console.WriteLine("enter t: for treatment");
+                            Console.WriteLine("enter r: to refuel");
+                            string choise = System.Console.ReadLine();
                             switch (choise)
                             {
-                                case 1:
+                                case "t":
                                     b.treatment();
                                     Console.WriteLine("success");
                                     break;
-                                case 2:
+                                case "r":
                                     b.Refuel();
                                     Console.WriteLine("success");
                                     break;
@@ -84,16 +96,16 @@ namespace dotNet_01_9444_0180
                         else
                             Console.WriteLine("Could not be found");
                         break;
-                    case 'd':
+                    case "d":
                         b1.PrintAllBusses();
                         break;
-                    case 'e':
+                    case "e":
                         Console.WriteLine("bye");
                         break;
                     default:
                         break;
                 }
-            } while (ch != 'e');
+            } while (ch != "e");
 
 
         }
