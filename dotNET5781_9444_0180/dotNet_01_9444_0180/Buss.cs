@@ -17,9 +17,9 @@ namespace dotNet_01_9444_0180
 
 	
      
-       public Buss()
+       public Buss()// defalt constractor
 		{ }
-        public Buss(string license, DateTime date)
+        public Buss(string license, DateTime date)// constractor that get arguments
 		{
 
 			LicenseNum = license;
@@ -28,22 +28,16 @@ namespace dotNet_01_9444_0180
 			FuelMileage = 0;
 			ThisMileage = 0;
 		}
-		public bool Prepare()
+		public bool Prepare()// return true if the buss no dangerous for a drive
 		{
 			DateTime today = DateTime.Now;
 			if (ThisMileage < 20000 &&  today.AddYears(-1)<= DateOfTreatment )
 				return true;
 			return false;
 		}
-		bool fuel()// return true if the buss need fuel
-		{
-			if (FuelMileage < 1200)
-				return false;
-			else
-				return true;
-		}
+		
 
-		public bool ReadyForDrive(int val)
+		public bool ReadyForDrive(int val)// return true if the buss can go for a drive 
 		{
 			if (FuelMileage + val > 1200)//if the buss need fuel for the drive
 				return false;
@@ -57,19 +51,19 @@ namespace dotNet_01_9444_0180
 				return true;
 			}
 		}
-		public void Refuel()//
+		public void Refuel()// refeul the buss
         {
 			FuelMileage = 0;
 		}
 
-		public void treatment()
+		public void treatment()// give the buss a treatment
         {
 			ThisMileage = 0;
 			DateOfTreatment = DateTime.Now;
 
 		}
 
-        public void Print()
+        public void Print()// print the data of the buss
         {
             Console.WriteLine("License:" + LicenseNum + " Mileage:" + ThisMileage);
         }

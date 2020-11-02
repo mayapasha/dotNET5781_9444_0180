@@ -41,7 +41,7 @@ namespace dotNet_01_9444_0180
                             Console.WriteLine("Enter the starting date of the buss:");
                             startnum = Console.ReadLine();
                             DateTime.TryParse(startnum, out date);
-                            if (date.Year >= 2018 && License.Length != 10 || date.Year < 2018 && License.Length != 9)
+                            if (date.Year >= 2018 && License.Length != 10 || date.Year < 2018 && License.Length != 9)//chacking if the license not match the year
                             {
                                 Console.WriteLine("ERROR");
                                 flag = false;
@@ -50,9 +50,10 @@ namespace dotNet_01_9444_0180
                             {
                                 flag = true;
                             }
-                        } while (flag == false);
+                        } while (flag == false);// do the while if the license not match the year
                         b1.AddNewBuss(License, date);
                         break;
+
                     case "b":
                         Console.WriteLine("Enter the license number:");
                         License = System.Console.ReadLine();
@@ -69,6 +70,7 @@ namespace dotNet_01_9444_0180
                         else
                             Console.WriteLine("Could not be found");
                         break;
+
                     case "c":
                         Console.WriteLine("Enter the license number:");
                         License = System.Console.ReadLine();
@@ -96,18 +98,19 @@ namespace dotNet_01_9444_0180
                         else
                             Console.WriteLine("Could not be found");
                         break;
+
                     case "d":
                         b1.PrintAllBusses();
                         break;
+
                     case "e":
                         Console.WriteLine("bye");
                         break;
+
                     default:
                         break;
                 }
             } while (ch != "e");
-
-
         }
     }
 }

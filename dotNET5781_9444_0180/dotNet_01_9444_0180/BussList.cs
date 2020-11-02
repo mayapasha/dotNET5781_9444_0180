@@ -10,7 +10,7 @@ namespace dotNet_01_9444_0180
 	class BussList
     {
 		public List<Buss> Busses;
-		public BussList()
+		public BussList()// constractor
 		{
 			Busses = new List<Buss>();
 		}
@@ -20,7 +20,7 @@ namespace dotNet_01_9444_0180
 			Busses.Add(b);
 		}
 
-        public Buss FindBuss(string license)
+        public Buss FindBuss(string license)// get string , search the matching license and return this bus 
         {
             for (int i = 0; i < Busses.Count; i++)
             {
@@ -28,17 +28,10 @@ namespace dotNet_01_9444_0180
                 {
                     return Busses[i];
                 }
-            }
-            //foreach (Buss item in Busses)
-            //{
-            //	if (item.LicenseNum == license)
-            //		return item;
-
-            //}
-            return null;
-            ////return Busses.Find((Buss) => Buss.LicenseNum == license);
+            }  
+            return null;       
         }
-        public void PrintAllBusses()
+        public void PrintAllBusses()// print all the busses that in the list
         {
             foreach (Buss item in Busses)
             {
