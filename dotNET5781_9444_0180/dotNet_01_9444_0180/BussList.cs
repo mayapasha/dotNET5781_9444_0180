@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,21 +12,40 @@ namespace dotNet_01_9444_0180
 		public List<Buss> Busses;
 		public BussList()
 		{
+			Busses = new List<Buss>();
 		}
-		public void addNewBuss(string license, string startdate)
+		public void AddNewBuss(string license,  DateTime date)//The func adding a new buss into the list of busses
 		{
-			Buss b = new Buss(license, startdate);
+			Buss b = new Buss(license, date);
 			Busses.Add(b);
 		}
-		public Buss* exist (Buss b)
+
+        public Buss FindBuss(string license)
         {
-			
+            for (int i = 0; i < Busses.Count; i++)
+            {
+                if (Busses[i].LicenseNum == license)
+                {
+                    return Busses[i];
+                }
+            }
+            //foreach (Buss item in Busses)
+            //{
+            //	if (item.LicenseNum == license)
+            //		return item;
+
+            //}
+            return null;
+            ////return Busses.Find((Buss) => Buss.LicenseNum == license);
         }
-		public Buss* find(string license)
-		{
-			Busses.ForEach()
-		
-		}
+        public void PrintAllBusses()
+        {
+            foreach (Buss item in Busses)
+            {
+				item.Print();
+            }
+        }
+
 	}
 	
 }

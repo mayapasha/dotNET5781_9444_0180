@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNET5781_00_9444_0180", "dotNET5781_00_9444_0180\dotNET5781_00_9444_0180.csproj", "{0098337D-F0FB-48A1-8D70-B9330B531EE0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet_01_9444_0180", "dotNet_01_9444_0180\dotNet_01_9444_0180.csproj", "{48574C30-A753-4B16-A1CD-FAEF6F78AEBD}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0098337D-F0FB-48A1-8D70-B9330B531EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0098337D-F0FB-48A1-8D70-B9330B531EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0098337D-F0FB-48A1-8D70-B9330B531EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0098337D-F0FB-48A1-8D70-B9330B531EE0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48574C30-A753-4B16-A1CD-FAEF6F78AEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{48574C30-A753-4B16-A1CD-FAEF6F78AEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48574C30-A753-4B16-A1CD-FAEF6F78AEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
