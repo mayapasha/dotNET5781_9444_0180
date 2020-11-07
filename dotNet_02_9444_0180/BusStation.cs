@@ -15,10 +15,10 @@ namespace dotNet_02_9444_0180
         public string StationAdress { get; set; }
         public BusStation()
         {
-            Latitude = r.Next(31, 33);
-            Latitude += r.NextDouble();
-            Longitude = r.Next(34, 35);           
-            Longitude += r.NextDouble();
+            Latitude = r.NextDouble() * (2.3) + 31;
+            //Latitude += r.NextDouble();
+            Longitude = r.NextDouble()*(1.2)+34;           
+            //Longitude += r.NextDouble();
         }
         public override string ToString()
         {
