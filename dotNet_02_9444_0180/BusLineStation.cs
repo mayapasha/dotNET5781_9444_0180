@@ -13,13 +13,13 @@ namespace dotNet_02_9444_0180
         {
             
         }      
-        public void distanceCalculation(BusStation b)// the func get bus station and calculate the distance between the last station and this station
+        public double distanceCalculation(BusStation b)// the func get bus station and calculate the distance between the last station and this station
         {
             double x = b.Latitude - this.Latitude;
             double y = b.Longitude - this.Longitude;
             x=Math.Pow(x, 2);
             y = Math.Pow(y, 2);
-            this.Distance = Math.Sqrt(x + y);
+            return this.Distance = Math.Sqrt(x + y);
         }
     }
 }
