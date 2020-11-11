@@ -6,46 +6,44 @@ using System.Threading.Tasks;
 
 namespace dotNet_02_9444_0180
 {
-    class BusLine
-    {
-        enum MyEnum { General, North, South, Center, Jerusalem };
+    class BusLine:IComparable<BusLine>
+    {    
+        public int BusLineNumber { get; set; }// the bus line number
+        public BusLineStation FirstStation { get; set; }// the first station 
+        public BusLineStation LastStation { get; set; }// the last station
+        public int Area { get; set; }// the area of the bus line
+        public List<BusLineStation> Stations { get; set; }// list of all the stations in the bus line
 
-        public int BusLineNumber { get; set; }
-        public BusLineStation FirstStation { get; set; }
-        public BusLineStation LastStation { get; set; }
-        public int Area { get; set; }
-        public List<BusLineStation> Stations { get; set; }
-
-        public BusLine()
+        public BusLine()// constractor
         {
 
         }
 
-        public int ReciveNumStation()
+        public int ReciveNumStation()// get the number station by string and return it by int
         {
             string s = Console.ReadLine();
-            int x = 0;
-            bool b = int.TryParse(s, out x);
-            int y = -1;
+            int tryToInt = 0;
+            bool b = int.TryParse(s, out tryToInt);
+            int intVersion = -1;
             if (b)
             {
-                y = int.Parse(s);
+                intVersion = int.Parse(s);
             }
-            return y;
+            return intVersion;
         }
-        public override string ToString()
+        public override string ToString()// return string of the information about the bus line
         {
             return "BusLinNumber:" + BusLineNumber + "Area:" + Area + "Stations:" + Stations.ToString();
         }
         public void AddStation(BusLineStation other)//the func gets a buss line and adding it to the stations's list
         {
             Console.WriteLine("Enter bus station number that you want to add:");
-            int y = ReciveNumStation();
+            int stationNum = ReciveNumStation();
             Console.WriteLine("Enter the station number for the new station:");
             int stationIndex = System.Console.Read();
             foreach (var item in Stations)
             {
-                if (item.BusStationKey == y)
+                if (item.BusStationKey == stationNum)
                 {
                     Console.WriteLine("ERROR");
                     return;
@@ -61,55 +59,48 @@ namespace dotNet_02_9444_0180
             }
             Stations.Insert(stationIndex - 1, other);
         }
-        public void DeleteStation()
+        public void DeleteStation()// delete station of the list
         {
             Console.WriteLine("Enter bus station number that you want to delete:");
-            int y = ReciveNumStation();
+            int stationNum = ReciveNumStation();
             for (int i = 0; i < Stations.Count; i++)
             {
-                if (Stations[i].BusStationKey == y && y != -1)
+                if (Stations[i].BusStationKey == stationNum && stationNum != -1)
                 {
                     Stations.Remove(Stations[i]);
                 }
             }
 
         }
-        public bool FindStation()
+        public bool FindStation()// return true if the station exist in the list
         {
             Console.WriteLine("Enter bus station number that you want to find:");
-            string s = Console.ReadLine();
-            int x = 0;
-            bool b = int.TryParse(s, out x);
-            int y = -1;
-            if (b)
-            {
-                y = int.Parse(s);
-            }
+            int stationNum = ReciveNumStation();
             for (int i = 0; i < Stations.Count; i++)
             {
-                if (Stations[i].BusStationKey == y && y != -1)
+                if (Stations[i].BusStationKey == stationNum && stationNum != -1)
                 {
                     return true;
                 }
             }
             return false;
         }
-        public double DistanceBetweenTwoStations()
+        public double DistanceBetweenTwoStations()// calculate the distance between two stations
         {
             int stationIndex1 = 0, stationIndex2 = 0;
             Console.WriteLine("Enter the two station number's of the stations you want to know what the distance between them:");
-            int y = ReciveNumStation();
-            int x = ReciveNumStation();
+            int stationNum1 = ReciveNumStation();
+            int stationNum2 = ReciveNumStation();
             for (int i = 0; i < Stations.Count; i++)
             {
-                if (Stations[i].BusStationKey == y)
+                if (Stations[i].BusStationKey == stationNum1)
                 {
                     stationIndex1 = i;
                 }
             }
             for (int i = 0; i < Stations.Count; i++)
             {
-                if (Stations[i].BusStationKey == y)
+                if (Stations[i].BusStationKey == stationNum2)
                 {
                     stationIndex2 = i;
                 }
@@ -117,7 +108,7 @@ namespace dotNet_02_9444_0180
             return Stations[stationIndex1 - 1].distanceCalculation(Stations[stationIndex2 - 1]);
         }
 
-        public BusLine CraeteSubRouteBusLine(BusStation b1, BusStation b2)
+        public BusLine CraeteSubRouteBusLine(BusStation b1, BusStation b2)// create sub bus line with the sub route of main bus line
         {
             BusLine SubRouteLine = new BusLine();
             int index1 = -1, index2 = -1;
@@ -155,10 +146,38 @@ namespace dotNet_02_9444_0180
             }
             SubRouteLine.FirstStation = Stations[index1];
             SubRouteLine.LastStation = Stations[index2];
-            SubRouteLine.Area = Area;// לבדוק
+            SubRouteLine.Area = Area;
             return SubRouteLine;
         }
+     
 
+        public int CompareTo(BusLine other)// return 0 if the time of the two bus lines is equals, return -1 if the time of the other bus line is bigger, else return 1
+        {
+            int timeBusLine1=0;
+            int timeBusLine2 = 0;
+            foreach (var item in Stations)
+            {
+                timeBusLine1 += item.Time;
+            }
+            foreach (var item in other.Stations)
+            {
+                timeBusLine2 += item.Time;
+            }
+            if (timeBusLine1 == timeBusLine2)
+            {
+                return 0;
+            }
+               
+            else if (timeBusLine1 < timeBusLine2)
+            {
+                return -1;
+            }
+
+            else
+            {
+                return 1;
+            }               
+        }
     }
 }
 

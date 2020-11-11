@@ -8,8 +8,10 @@ namespace dotNet_02_9444_0180
 {
     class Program
     {
+        enum MyEnum { General, North, South, Center, Jerusalem };
         static void Main(string[] args)
         {
+             
         }
     }
 }

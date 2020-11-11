@@ -7,8 +7,8 @@ namespace dotNet_02_9444_0180
 {
     class BusLineStation:BusStation
     {       
-        public double Distance { get; set; }
-        public double Time { get; set; }  // צריכים לחשב!!!!    
+        public double Distance { get; set; }// 
+        public int Time { get; set; }  // צריכים לחשב!!!!    
         public BusLineStation()// constractor
         {
             
