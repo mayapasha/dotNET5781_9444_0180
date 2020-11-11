@@ -11,7 +11,7 @@ namespace dotNet_02_9444_0180
         public int BusLineNumber { get; set; }// the bus line number
         public BusLineStation FirstStation { get; set; }// the first station 
         public BusLineStation LastStation { get; set; }// the last station
-        public int Area { get; set; }// the area of the bus line
+        public places Area { get; set; }// the area of the bus line
         public List<BusLineStation> Stations { get; set; }// list of all the stations in the bus line
 
         public BusLine()// constractor
@@ -37,13 +37,13 @@ namespace dotNet_02_9444_0180
         }
         public void AddStation(BusLineStation other)//the func gets a buss line and adding it to the stations's list
         {
-            Console.WriteLine("Enter bus station number that you want to add:");
-            int stationNum = ReciveNumStation();
-            Console.WriteLine("Enter the station number for the new station:");
+            //Console.WriteLine("Enter bus station number that you want to add:");
+            //int stationNum = ReciveNumStation();
+            Console.WriteLine("Enter the index of the station number you want to add:");
             int stationIndex = System.Console.Read();
             foreach (var item in Stations)
             {
-                if (item.BusStationKey == stationNum)
+                if (item.BusStationKey == other.BusStationKey)
                 {
                     Console.WriteLine("ERROR");
                     return;
