@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNet_02_9444_0180
 {
-    class BusLine:IComparable<BusLine>
+    public class BusLine:IComparable<BusLine>
     {    
         public int BusLineNumber { get; set; }// the bus line number
         public BusLineStation FirstStation { get; set; }// the first station 
@@ -153,8 +153,8 @@ namespace dotNet_02_9444_0180
 
         public int CompareTo(BusLine other)// return 0 if the time of the two bus lines is equals, return -1 if the time of the other bus line is bigger, else return 1
         {
-            int timeBusLine1=0;
-            int timeBusLine2 = 0;
+            TimeSpan timeBusLine1 = new TimeSpan(0, 0, 0);
+            TimeSpan timeBusLine2 = new TimeSpan(0, 0, 0); 
             foreach (var item in Stations)
             {
                 timeBusLine1 += item.Time;
@@ -177,6 +177,22 @@ namespace dotNet_02_9444_0180
             {
                 return 1;
             }               
+        }
+    }
+
+    public class BusLineException : Exception
+    {
+        public BusLineException():base("custom message")
+        {
+
+        }
+    }
+
+    public class BusLineException2 : Exception
+    {
+        public BusLineException2(string message) : base(message)
+        {
+
         }
     }
 }

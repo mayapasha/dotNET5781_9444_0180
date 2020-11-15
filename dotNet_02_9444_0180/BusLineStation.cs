@@ -8,10 +8,11 @@ namespace dotNet_02_9444_0180
     class BusLineStation:BusStation
     {       
         public double Distance { get; set; }// 
-        public int Time { get; set; }  // צריכים לחשב!!!!    
+        public TimeSpan Time { get; set; }
+        
         public BusLineStation()// constractor
         {
-            
+            Time = new TimeSpan(0, 0, 0);
         }      
         public double distanceCalculation(BusStation b)// the func get bus station and calculate the distance between the last station and this station
         {

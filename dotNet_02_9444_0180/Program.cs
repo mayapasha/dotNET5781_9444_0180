@@ -12,13 +12,17 @@ namespace dotNet_02_9444_0180
         static void Main(string[] args)
         {
 
-            BusLines LinesCollection = new BusLines();
-            BusLineStation[] allStations = new BusLineStation[40];
+
+                BusLines LinesCollection = new BusLines();
+                LinesCollection.AddBusLine(new BusLineStation[5]);
+                BusLineStation[] allStations = new BusLineStation[40];
+
+                ICalulator calc = new SomeCalulator();
 
             string choise = null;
             for (int i = 0; i < 40; i++)
             {
-                allStations[i].BusStationKey = i+1;
+                allStations[i].BusStationKey = i + 1;
             }
             for (int i = 0; i < 9; i++)
             {
@@ -48,9 +52,9 @@ namespace dotNet_02_9444_0180
                     other.Stations.Insert(9, allStations[37]);
                     other.Stations.Insert(9, allStations[38]);
                 }
-                    LinesCollection.lines.Insert(i, other);
+                LinesCollection.lines.Insert(i, other);
             }
-            
+
             do
             {
 
@@ -90,6 +94,14 @@ namespace dotNet_02_9444_0180
                         break;
                 }
             } while (choise != "e");
+
+            //System.Collections.IEnumerator e = LinesCollection.GetEnumerator();
+
+            //    while (e.MoveNext())
+            //    {
+            //        Console.WriteLine(e.Current);
+            //    }
+           
         }
     }
 }
