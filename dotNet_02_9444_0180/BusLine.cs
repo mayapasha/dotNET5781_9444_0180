@@ -45,7 +45,7 @@ namespace dotNet_02_9444_0180
             {
                 if (item.BusStationKey == other.BusStationKey)
                 {
-                    Console.WriteLine("ERROR");
+                    Console.WriteLine("ERROR");// להוסיף חריגה
                     return;
                 }
             }
