@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNet_02_9444_0180
 {
-    class BusStation
+    public class BusStation
     {
         public static Random r = new Random();
         public int BusStationKey { get; set; } // the station number       

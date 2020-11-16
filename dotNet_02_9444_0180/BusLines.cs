@@ -12,6 +12,8 @@ namespace dotNet_02_9444_0180
         public List<BusLine> lines { get; set; }
         public int size { get; set; }
 
+
+
         public void AddBusLine(BusLineStation[] stationsCollection)
         {
             BusLine other = new BusLine();
@@ -55,7 +57,7 @@ namespace dotNet_02_9444_0180
             //{
             //    throw new BusLineException();
             //}
-            other.Area = (places)areaChoies;
+            other.Area = (Places)areaChoies;
             other.FirstStation = other.Stations[0];
             other.LastStation = other.Stations[other.Stations.Count - 1];
             if (counter == 1)
@@ -161,7 +163,33 @@ namespace dotNet_02_9444_0180
             return e;
         }
 
+        public void addStationToBusLine(BusLineStation[] stationsCollection)
+        {
+            Console.WriteLine("Enter the bus line number you want to add it the satation");
+            string input = Console.ReadLine();
+            int tryToInt = 0;
+            bool b = int.TryParse(input, out tryToInt);
+            int intVersion = -1;
+            if (b)
+            {
+                intVersion = int.Parse(input);
+            }
+            else
+            {
+                //זריקת חריגה
+            }
+            int idBusToAddStation = intVersion;
+            Console.WriteLine("from 1-40 :which station you want to add?");
+            int indexStations = Console.Read();
+            foreach (var item in lines)
+            {
+                if(item.BusLineNumber==idBusToAddStation)
+                {
+                    item.AddStation(stationsCollection[indexStations-1]);
+                }
+            }
 
+        }
         //public IEnumerator GetEnumerator()
         //{
         //    var IEnumerator = new BusLineEnumerator(lines);

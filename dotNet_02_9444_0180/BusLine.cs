@@ -9,14 +9,21 @@ namespace dotNet_02_9444_0180
     public class BusLine:IComparable<BusLine>
     {    
         public int BusLineNumber { get; set; }// the bus line number
-        public BusLineStation FirstStation { get; set; }// the first station 
-        public BusLineStation LastStation { get; set; }// the last station
-        public places Area { get; set; }// the area of the bus line
+        public BusLineStation FirstStation { get {return Stations[0]; } }// the first station 
+        public BusLineStation LastStation { get { return Stations[Stations.Count-1]; } }// the last station
+        public Places Area { get; set; }// the area of the bus line
         public List<BusLineStation> Stations { get; set; }// list of all the stations in the bus line
 
         public BusLine()// constractor
         {
 
+        }
+         
+        public BusLine(List<BusLineStation> stations, Places arae, int keyBusStation)
+        {
+            Stations = stations;
+            Area = arae;
+            BusLineNumber = keyBusStation;
         }
 
         public int ReciveNumStation()// get the number station by string and return it by int

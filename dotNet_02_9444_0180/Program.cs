@@ -6,28 +6,25 @@ using System.Threading.Tasks;
 
 namespace dotNet_02_9444_0180
 {
-    enum places { General,North,South,Center,Jerusalem};
+    public enum Places { General,North,South,Center,Jerusalem};
     class Program
     {
         static void Main(string[] args)
         {
 
 
-                BusLines LinesCollection = new BusLines();
-                LinesCollection.AddBusLine(new BusLineStation[5]);
-                BusLineStation[] allStations = new BusLineStation[40];
-
-                ICalulator calc = new SomeCalulator();
-
+            BusLines LinesCollection = new BusLines();
+            //LinesCollection.AddBusLine(new BusLineStation[5]);
+            BusLineStation[] allStations = new BusLineStation[40];
             string choise = null;
             for (int i = 0; i < 40; i++)
             {
                 allStations[i].BusStationKey = i + 1;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 10; i++)
             {
 
-                BusLine other = new BusLine() { BusLineNumber = i + 41, Area = places.General };
+                BusLine other = new BusLine() { BusLineNumber = i + 41, Area = Places.General };
                 if (i < 9)
                 {
                     for (int j = 0 + i, k = 0; k < 10 || j < 40; j += 1 + i, k++)
@@ -78,7 +75,7 @@ namespace dotNet_02_9444_0180
                                 LinesCollection.AddBusLine(allStations);
                                 break;
                             case "2":
-
+                                LinesCollection.addStationToBusLine(allStations);
                                 break;
                             default:
                                 break;
