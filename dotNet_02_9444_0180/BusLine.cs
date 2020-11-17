@@ -16,73 +16,67 @@ namespace dotNet_02_9444_0180
 
         public BusLine()// constractor
         {
-
+            
         }
          
-        public BusLine(List<BusLineStation> stations, Places arae, int keyBusStation)
-        {
-            Stations = stations;
-            Area = arae;
-            BusLineNumber = keyBusStation;
-        }
-
+      
         public int ReciveNumStation()// get the number station by string and return it by int
         {
             string s = Console.ReadLine();
             int tryToInt = 0;
             bool b = int.TryParse(s, out tryToInt);
-            int intVersion = -1;
+            int intVersion = 0;
             if (b)
             {
                 intVersion = int.Parse(s);
+            }
+            else
+            {
+                throw new FormatException();
             }
             return intVersion;
         }
         public override string ToString()// return string of the information about the bus line
         {
-            return "BusLinNumber:" + BusLineNumber + "Area:" + Area + "Stations:" + Stations.ToString();
+            string s = "";
+            foreach (var item in Stations)
+            {
+                s += '\n' + item.ToString();
+            }
+            return "BusLinNumber: " + BusLineNumber + '\n'+" Area: " + Area + '\n' + " Stations: " + '\n' + s + '\n';
         }
-        public void AddStation(BusLineStation other)//the func gets a buss line and adding it to the stations's list
+        public void AddStation(BusLineStation other)//the func gets station and adding it to the stations's list
         {
-            //Console.WriteLine("Enter bus station number that you want to add:");
-            //int stationNum = ReciveNumStation();
-            Console.WriteLine("Enter the index of the station number you want to add:");
-            int stationIndex = System.Console.Read();
+            Console.WriteLine("Enter the index of the station number you want to add between " + 0 + " to " + Stations.Count);
+            int stationIndex = ReciveNumStation();
+            if(stationIndex<0||stationIndex>Stations.Count)
+            {
+                throw new IndexOutOfRangeException();
+            }
             foreach (var item in Stations)
             {
                 if (item.BusStationKey == other.BusStationKey)
                 {
-                    Console.WriteLine("ERROR");// להוסיף חריגה
-                    return;
+                    throw new BusLineException();
                 }
-            }
-            if (stationIndex == 1)
-            {
-                FirstStation = other;
-            }
-            else if (stationIndex == Stations.Count)
-            {
-                LastStation = other;
             }
             Stations.Insert(stationIndex - 1, other);
         }
-        public void DeleteStation()// delete station of the list
-        {
-            Console.WriteLine("Enter bus station number that you want to delete:");
-            int stationNum = ReciveNumStation();
+        public void DeleteStation(int stationNum)// delete a station from the list stations
+        { 
             for (int i = 0; i < Stations.Count; i++)
             {
-                if (Stations[i].BusStationKey == stationNum && stationNum != -1)
+                if (Stations[i].BusStationKey == stationNum )
                 {
                     Stations.Remove(Stations[i]);
+                    return;
                 }
             }
-
+            throw new IndexOutOfRangeException();
         }
-        public bool FindStation()// return true if the station exist in the list
+        public bool FindStation(int stationNum)// return true if the station exist in the list
         {
-            Console.WriteLine("Enter bus station number that you want to find:");
-            int stationNum = ReciveNumStation();
+          
             for (int i = 0; i < Stations.Count; i++)
             {
                 if (Stations[i].BusStationKey == stationNum && stationNum != -1)
@@ -115,45 +109,43 @@ namespace dotNet_02_9444_0180
             return Stations[stationIndex1 - 1].distanceCalculation(Stations[stationIndex2 - 1]);
         }
 
-        public BusLine CraeteSubRouteBusLine(BusStation b1, BusStation b2)// create sub bus line with the sub route of main bus line
+        public BusLine CraeteSubRouteBusLine(BusStation b1, BusStation b2)// create sub bus line between two stations that we get and return it
         {
             BusLine SubRouteLine = new BusLine();
+            SubRouteLine.Stations = new List<BusLineStation>();
             int index1 = -1, index2 = -1;
-            for (int i = 0; i < Stations.Count; i++)
+            for (int i = 0; i < Stations.Count; i++)// find the index of the the first station
             {
                 if (Stations[i].BusStationKey == b1.BusStationKey)
                 {
                     index1 = i;
                 }
             }
-            if (index1 == -1)
+            if (index1 == -1)// if the station did not found
             {
-                Console.WriteLine("ERROR");
-                return null;
+                throw new FindStationIndexExeption();
             }
-            for (int i = 0; i < Stations.Count; i++)
+            for (int i = 0; i < Stations.Count; i++)// find the index of the the last station
             {
-                if (Stations[i].BusStationKey == b1.BusStationKey)
+                if (Stations[i].BusStationKey == b2.BusStationKey)
                 {
                     index2 = i;
                 }
             }
-            if (index2 == -1)
+            if (index2 == -1)// if the station did not found
             {
-                Console.WriteLine("ERROR");
-                return null;
+                throw new FindStationIndexExeption();
 
             }
             int tmp = index1;
-            index1 = Math.Min(index1, index2);
+            index1 = Math.Min(tmp, index2);
             index2 = Math.Max(tmp, index2);
-            for (int i = index1, j = index2, k = 0; i <= j; i++, k++)
+            for (int i = index1, j = index2; i <= j; i++)// add the stations between the two stations to the list of the bus line that we return
             {
-                SubRouteLine.Stations[k] = Stations[i];
-            }
-            SubRouteLine.FirstStation = Stations[index1];
-            SubRouteLine.LastStation = Stations[index2];
+                SubRouteLine.Stations.Add(Stations[i]);
+            }           
             SubRouteLine.Area = Area;
+            SubRouteLine.BusLineNumber = BusLineNumber;
             return SubRouteLine;
         }
      
@@ -185,22 +177,24 @@ namespace dotNet_02_9444_0180
                 return 1;
             }               
         }
-    }
 
+    }
+    // exceptions classes:
     public class BusLineException : Exception
     {
-        public BusLineException():base("custom message")
+        public BusLineException():base ("Can not repeat station in bus line")
         {
-
+           
         }
+       
     }
-
-    public class BusLineException2 : Exception
+    public class FindStationIndexExeption:Exception
     {
-        public BusLineException2(string message) : base(message)
+        public FindStationIndexExeption() : base("Can not find station on the station list ")
         {
 
         }
     }
+    
 }
 

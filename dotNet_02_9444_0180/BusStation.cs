@@ -10,8 +10,8 @@ namespace dotNet_02_9444_0180
     {
         public static Random r = new Random();
         public int BusStationKey { get; set; } // the station number       
-        public double Latitude { get; set; }// רוחב
-        public double Longitude { get; set; }// אורך
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public string StationAdress { get; set; }// the station adress
         public BusStation()// constractor
         {
@@ -20,7 +20,7 @@ namespace dotNet_02_9444_0180
         }
         public override string ToString()// return string with the information
         {
-            return "Bus Station Code:" + BusStationKey + " , " + Latitude + "°N " + Longitude + "°E";
+            return "Bus Station Code: " + BusStationKey + " , " + Latitude + " °N , " + Longitude + " °E";
         }
     }
 }

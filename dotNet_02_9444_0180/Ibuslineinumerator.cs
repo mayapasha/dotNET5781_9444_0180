@@ -11,9 +11,11 @@ namespace dotNet_02_9444_0180
     {
         public int Busindex = -1;
         public List<BusLine> Lines { get; set; }
+        public int count = 0;
         public Ibuslineinumerator(List<BusLine> lines)
         {
             Lines = lines;
+            count = Lines.Count;
         }
         public object Current
         {
@@ -23,11 +25,13 @@ namespace dotNet_02_9444_0180
         
         public bool MoveNext()
         {
-            if(Lines[++Busindex]!=null)
+            ++Busindex;
+            if (Busindex>=count)
             {
-                return true;
+                Busindex = -1;
+                return false;               
             }
-            return false;
+            return true;
         }
 
         public void Reset()
