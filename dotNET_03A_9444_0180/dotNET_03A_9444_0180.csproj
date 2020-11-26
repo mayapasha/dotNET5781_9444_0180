@@ -100,5 +100,8 @@
       <Name>dotNet_02_9444_0180</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hab4f2e890edd43dda8e5e2d216c81ba1G %282%29.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

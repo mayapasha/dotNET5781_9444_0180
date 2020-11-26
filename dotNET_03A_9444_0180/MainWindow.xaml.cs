@@ -24,21 +24,21 @@ namespace dotNET_03A_9444_0180
         private BusLine currentDisplayBusLine;
         public MainWindow()
         {
-            b.lines = new List<BusLine>(); 
+            b.lines = new List<BusLine>();
             int counter = 0;
             Random r = new Random();
             for (int i = 0; i < 10; i++)
             {
-               BusLine other = new BusLine();
+                BusLine other = new BusLine();
                 other.Stations = new List<BusLineStation>();
-                other.BusLineNumber = r.Next(1, 100);
+                other.BusLineNumber = i;
                 other.Area = (Places)r.Next(0, 4);
 
                 other.Stations = new List<BusLineStation>();
                 for (int k = 0; k < 5; k++)
                 {
-                    BusLineStation s= new BusLineStation();
-                    s.BusStationKey= r.Next(1, 99999);
+                    BusLineStation s = new BusLineStation();
+                    s.BusStationKey = r.Next(1, 99999);
                     other.Stations.Add(s);
                 }
                 b.lines.Add(other);
@@ -62,15 +62,15 @@ namespace dotNET_03A_9444_0180
 
                     }
                 }
-                InitializeComponent();
-                //cbBusLines = new ComboBox();
-                cbBusLines.ItemsSource = b;
-                cbBusLines.DisplayMemberPath = " BusLineNum ";
-                cbBusLines.SelectedIndex = 0;
-                
+
+
             }
-            
-            
+            InitializeComponent();
+            //cbBusLines = new ComboBox();
+            cbBusLines.ItemsSource = b;
+            cbBusLines.DisplayMemberPath = " BusLineNumer ";
+            cbBusLines.SelectedIndex = 0;
+
         }
         private void ShowBusLine(int index)
         {

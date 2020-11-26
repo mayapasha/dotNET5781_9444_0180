@@ -19,7 +19,6 @@ namespace dotNet_02_9444_0180
             
         }
          
-      
         public int ReciveNumStation()// get the number station by string and return it by int
         {
             string s = Console.ReadLine();

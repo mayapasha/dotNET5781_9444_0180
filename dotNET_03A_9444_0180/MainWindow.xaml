@@ -5,26 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNET_03A_9444_0180"
         mc:Ignorable="d"
-        Title="MainWindow" Height="640" Width="800">
-    <Grid Name="MainGrid">
+        Title="MainWindow" Height="640" Width="800" Background="#FFDE7089">
+    <Grid Name="MainGrid" Background="{x:Null}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="640*"/>
+            <ColumnDefinition Width="153*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
         <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
-VerticalAlignment="Stretch" Width="auto">
+VerticalAlignment="Stretch" Width="auto" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
-            <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Bus Line Number:" VerticalAlignment="Top" Width="156" Margin="32,21,0,0" FontFamily="Ink Free" FontWeight="Bold" FontSize="18"/>
-            <TextBox Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="43" Margin="47,19,0,0" TextWrapping="Wrap" Text="Area:" VerticalAlignment="Top" Width="162" FontFamily="Ink Free" FontWeight="Bold" FontSize="18"/>
-            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="34,10,0,0" VerticalAlignment="Stretch" Width="120" SelectionChanged="cbBusLines_SelectionChanged"/>
-            <TextBox x:Name="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="72,31,0,0" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Width="120" FontFamily="Ink Free"/>
+            <TextBox Background="#FFAC2F62"  HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Bus Line Number:" VerticalAlignment="Top" Width="156" Margin="32,24,0,0" FontFamily="Ink Free" FontSize="18" FontWeight="Bold" Foreground="White" SelectionBrush="{x:Null}" BorderBrush="{x:Null}"/>
+            <TextBox Background="#FFAC2F62" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="122,19,0,0" TextWrapping="Wrap" Text="Area:" VerticalAlignment="Top" Width="66" FontFamily="Ink Free" FontWeight="Bold" FontSize="18" Foreground="White" SelectionBrush="{x:Null}" BorderBrush="{x:Null}"/>
+            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="40,10,38,0" VerticalAlignment="Stretch" Width="120" SelectionChanged="cbBusLines_SelectionChanged" Background="#FF7EE6E1" BorderBrush="{x:Null}" FontSize="18" Foreground="#FF074D41"  >
+            </ComboBox>
+            <TextBox x:Name="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="39,21,39,24" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Width="120" FontFamily="Ink Free" Foreground="#FF9B3258" SelectionBrush="{x:Null}" BorderBrush="{x:Null}"/>
         </Grid>
-        <ListBox x:Name="lbBusLineStations" HorizontalAlignment="Left" Height="64" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" ItemsSource="{Binding}"/>
+        <ListBox x:Name="lbBusLineStations" HorizontalAlignment="Left" Height="220" Margin="36,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="722" ItemsSource="{Binding}" BorderBrush="{x:Null}" Foreground="#FF9B3258" RenderTransformOrigin="0.5,0.5" Background="#FFF3CADF" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="51" Margin="22.5,480,0,0" Grid.Row="1" TextWrapping="Wrap" Text="L&amp;M" VerticalAlignment="Top" Width="120" FontSize="36" FontFamily="Rockwell Extra Bold" Background="{x:Null}" Foreground="#FF9B3258" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1"/>
 
 
 
