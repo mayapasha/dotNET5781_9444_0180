@@ -103,5 +103,14 @@
   <ItemGroup>
     <Resource Include="Hab4f2e890edd43dda8e5e2d216c81ba1G %282%29.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sketch00102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sketch00103.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sketch00104.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
