@@ -67,9 +67,12 @@ namespace dotNET_03A_9444_0180
             }
             InitializeComponent();
             //cbBusLines = new ComboBox();
-            cbBusLines.ItemsSource = b;
-            cbBusLines.DisplayMemberPath = " BusLineNumer ";
+            cbBusLines.ItemsSource =b.lines;
+            cbBusLines.DisplayMemberPath = " BusLineNumber ";
             cbBusLines.SelectedIndex = 0;
+         //   cbBusLines.SelectedValuePath = " BusLineNumer ";
+               
+          //  cbBusLines.item
 
         }
         private void ShowBusLine(int index)
@@ -81,6 +84,11 @@ namespace dotNET_03A_9444_0180
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLineNumber);
+
+        }
+
+        private void lbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
