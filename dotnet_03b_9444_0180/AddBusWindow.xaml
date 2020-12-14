@@ -6,13 +6,22 @@
         xmlns:local="clr-namespace:dotnet_03b_9444_0180"
         mc:Ignorable="d"
         Title="Add Bus" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,-26,-2227,-21">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="296*"/>
+            <ColumnDefinition Width="832*"/>
+            <ColumnDefinition Width="1891*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="189*"/>
+            <RowDefinition Height="256*"/>
+        </Grid.RowDefinitions>
 
-        <TextBox Name="tblicense" HorizontalAlignment="Left" Height="42" Margin="418,0,0,0" TextWrapping="Wrap" Text="write here" VerticalAlignment="Top" Width="374" FontSize="20" TextChanged="TextBox_TextChanged_1"/>
-        <Label Content="Enter license number (number formatting)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390" Height="49" FontSize="20"/>
-        <TextBox Name="tbdate" HorizontalAlignment="Left" Height="42" Margin="418,0,0,319" TextWrapping="Wrap" Text="write here" VerticalAlignment="Bottom" Width="374" FontSize="20" TextChanged="TextBox_TextChanged_2"/>
-        <Label Content="Enter the start date of the bus" HorizontalAlignment="Left" VerticalAlignment="Center" Width="390" Height="49" FontSize="20" Margin="0,54,0,316" RenderTransformOrigin="0.505,-0.174"/>
-        <Button Content="create" HorizontalAlignment="Left" Margin="640,338,0,0" VerticalAlignment="Top" Width="107" Height="37" FontSize="24" Click="Button_Click"/>
+        <TextBox Name="tblicense" HorizontalAlignment="Left" Height="42" Margin="104,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="374" FontSize="20" TextChanged="TextBox_TextChanged_1" Grid.Column="1"/>
+        <Label Content="Enter license number (number formatting)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390" Height="49" FontSize="20" Grid.ColumnSpan="2" Margin="5,37,0,0"/>
+        <DatePicker Name="tbdate" HorizontalAlignment="Left" Height="42" Margin="104,0,0,64" Text="write here" VerticalAlignment="Bottom" Width="374" FontSize="20" SelectedDateChanged="tbdate_SelectedDateChanged" Grid.Column="1"/>
+        <Label Content="Enter the start date of the bus" HorizontalAlignment="Left" VerticalAlignment="Center" Width="390" Height="48" FontSize="20" Margin="0,86,0,64" RenderTransformOrigin="0.505,-0.174" Grid.ColumnSpan="2"/>
+        <Button Content="create" HorizontalAlignment="Left" Margin="326,187,0,0" VerticalAlignment="Top" Width="107" Height="37" FontSize="24" Click="Button_Click" Grid.Row="1" Grid.Column="1"/>
 
     </Grid>
 </Window>

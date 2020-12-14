@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,17 @@ namespace dotnet_03b_9444_0180
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ObservableCollection<Buss> Buses { get; set; }
+        
         BussList b = new BussList();
-        public ObservableCollection <Buss> Buses { get; }
+        
         
         int licensehelp = 0;
         string license = "";
         public MainWindow()
         {
+
             Buses = new ObservableCollection<Buss>();
-           
             DateTime startdate = new DateTime();
             Random r = new Random();
 
@@ -41,13 +44,7 @@ namespace dotnet_03b_9444_0180
                 license = "";
                 if (startdate.Year < 2018)
                 {
-                    licensehelp = r.Next(1000000, 9999999);
-                    //license += licensehelp / 100000;
-                    //licensehelp %= 100000;
-                    //license += "-";
-                    //license += licensehelp / 100;
-                    //licensehelp %= 100;
-                    //license += "-" + licensehelp;
+                    licensehelp = r.Next(1000000, 9999999);                
                     int div = 1000000;
                     for(int j=0;j<9;j++)
                     {
@@ -114,18 +111,43 @@ namespace dotnet_03b_9444_0180
             InitializeComponent();
             for (int i = 0; i < 10; ++i)
             {
-                ListBoxItem newItem = new ListBoxItem();
-                newItem.Content = Buses[i];
-                LbBuses.Items.Add(newItem);
-            }
+                //Button newButton = new Button();
+                //newButton.Content = "";
+                //newButton.Name = "btn";
+                //newButton. = true;
+               // newButton.Background =;
+               // newButton.ForeColor = Color.Black;
 
+              //  LbBuses.Items.Add(newButton);
+               // newButton.Dock = DockStyle.Top;
+                //newButton.BringToFront();
+
+
+                ListBoxItem newItem = new ListBoxItem();              
+                newItem.Content = Buses[i];
+                //newItem. = new Button();
+                LbBuses.Items.Add(newItem);
+                //LbBuses.Items[i]
+            }
+            Buses.CollectionChanged += CollectionChanged;
             //LbBuses.DataContext = Buses;
+        }
+
+        public void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var newbuss = e.NewItems[0];
+            LbBuses.Items.Add(newbuss);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddBusWindow addBusWindow = new AddBusWindow();
             addBusWindow.ShowDialog();
+        }
+
+        private void LbBuses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
         }
     }
 }
