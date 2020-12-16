@@ -1,0 +1,56 @@
+﻿<Window x:Class="dotnet_03b_9444_0180.BusInformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotnet_03b_9444_0180"
+        mc:Ignorable="d"
+        Title="BusInformationWindow" Height="450" Width="800">
+    <Grid Margin="0,10,0,158">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Label Content="License Number:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,10,0,0" Height="39" Width="165" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Mileage:" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="39" Width="141" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Start Date:" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="141" FontWeight="Bold" FontSize="20"/>
+        <Label Content="State:" HorizontalAlignment="Left" Margin="18,22,0,0" Grid.Row="3" VerticalAlignment="Top" Width="170" FontWeight="Bold" FontSize="20"/>
+        <TextBlock Name="L_license" Text="{Binding Path= Buses.SelectedIndex.LicenseNum}" Grid.Column="1" HorizontalAlignment="Left" Margin="41,10,0,0" VerticalAlignment="Top"  FontSize="20"/>
+        <TextBlock Name="L_mileage" Text="{Binding Path= Mileage}" Grid.Column="1" HorizontalAlignment="Left" Margin="41,10,0,0" Grid.Row="1" VerticalAlignment="Top"  FontSize="20"/>
+        <TextBlock Name="L_startDate" Text="{Binding Path= startdate}" Grid.Column="1" HorizontalAlignment="Left" Margin="41,10,0,0" Grid.Row="2" VerticalAlignment="Top"  FontSize="20" RenderTransformOrigin="-0.947,-0.696"/>
+        <TextBlock Name="L_state" Text="{Binding Path= state}" Grid.Column="1" HorizontalAlignment="Left" Margin="41,10,0,0" Grid.Row="3" VerticalAlignment="Top"  FontSize="20"/>
+        <Label Content="Driver name: " Grid.Column="2" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" />
+        <Label Content="Bus cost: " Grid.Column="2" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Bus compeny type: " Grid.Column="2" HorizontalAlignment="Left" Margin="0,20,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Width="188"/>
+        <Label Content="Made in: " Grid.Column="2" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="49,29,0,0" TextWrapping="Wrap" Text="{Binding Path=DriverName}" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="49,23,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Path=BusCost}" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="49,20,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=BusCompenyType}" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="49,22,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Path=MadeIn}" VerticalAlignment="Top" Width="120"/>
+        <Button Name="refeul_button" Content="refeul" Grid.Column="3" HorizontalAlignment="Left" Height="43" Margin="9,147,0,-127" Grid.Row="3" VerticalAlignment="Top" Width="68" Click="refeul_button_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="treatment_button" Content="treatment" Grid.Column="3" HorizontalAlignment="Left" Height="42" Margin="116,147,0,-126" Grid.Row="3" VerticalAlignment="Top" Width="67" Click="treatment_button_Click" >
+        <Button.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="20"/>
+            </Style>
+        </Button.Resources>
+        </Button>
+    </Grid>
+</Window>

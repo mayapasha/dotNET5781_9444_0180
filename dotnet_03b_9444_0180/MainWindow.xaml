@@ -6,18 +6,38 @@
         xmlns:local="clr-namespace:dotnet_03b_9444_0180"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="BusTemplate" DataType="local: Buss">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="license number: "/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=LicenseNum}"/>
+                <TextBlock Grid.Column="2" Text="Status "/>
+                <TextBlock Grid.Column="3" Text="{Binding Path=state}"/>
+                <Button x:Name="BusForDrive" Content="Drive" Margin="10,2,10,10" Click="drive_click" Grid.Column="4"/>
+                <Button x:Name="refeul" Content="Refeul" Margin="10,2,10,10" Click="refeul_click" Grid.Column="5"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70*"/>
-            <ColumnDefinition Width="29*"/>
-        </Grid.ColumnDefinitions>
-
-        <ListBox Name="LbBuses" HorizontalAlignment="Left" Height="340" Margin="10,0,0,0" VerticalAlignment="Top" Width="605" Grid.ColumnSpan="2" SelectionChanged="LbBuses_SelectionChanged" >
-            
-
-        </ListBox>
-        <Button Content="Add bus" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Top" Width="129" Height="77" Click="Button_Click" Grid.Column="1"/>
-
-
+        <Button Content="Add bus" HorizontalAlignment="Left" Margin="653,10,0,0" VerticalAlignment="Top" Width="129" Height="77" Click="Button_Click"/>
+        <StackPanel>
+            <ListBox x:Name="LbBuses" ItemsSource="{Binding}" ItemTemplate="{StaticResource BusTemplate}" HorizontalAlignment="Left" Height="340" Margin="10,0,0,0" VerticalAlignment="Top" Width="605" Grid.ColumnSpan="2" PreviewMouseDoubleClick="LbBuses_MouseDoubleClick"  />
+</StackPanel>
     </Grid>
+
 </Window>
+
+
+

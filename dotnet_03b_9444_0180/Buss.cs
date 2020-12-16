@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace dotNet_01_9444_0180
-{
-	public class Buss
-    {
-        public enum Status
+{  public  enum Status
         {
 			ready,on_drive,on_refeul,on_a_treatment
         }
+	public class Buss:BusInfo
+    {
+      
 		public Status state { get; set; }
 		public DateTime DateOfTreatment { get; set; }
 		public DateTime startdate { get; set; }

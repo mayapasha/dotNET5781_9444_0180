@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using dotNet_01_9444_0180;
 
 namespace dotnet_03b_9444_0180
@@ -25,38 +26,37 @@ namespace dotnet_03b_9444_0180
         {
             InitializeComponent();
         }
-        
-        
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string license = tblicense.Text;                    
-           if(license.Length==7)
-            {
 
+            string license = tblicense.Text;
+            if (license.Length == 7)
+            {
+                license.Insert(2, "-");
+                license.Insert(6, "-");
             }
-           else
+            else
+            if (license.Length == 8)
             {
-
+                license.Insert(3, "-");
+                license.Insert(6, "-");
+            }
+            else
+            {
+                MessageBox.Show(" the license info is not currect- please  enter a currect licnse id");
+                return;
             }
             DateTime? date = tbdate.SelectedDate;
-           
-
-           
-            
             Buss b2 = new Buss(license, date.HasValue ? date.Value : new DateTime());
             MainWindow.Buses.Add(b2);
             Close();
         }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-        }
-
- 
-
-        private void tbdate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
