@@ -30,18 +30,18 @@ namespace dotnet_03b_9444_0180
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            // check if the number that enter is a license number
             string license = tblicense.Text;
             if (license.Length == 7)
             {
-                license.Insert(2, "-");
-                license.Insert(6, "-");
+                license = license.Insert(2, "-");
+                license = license.Insert(6, "-");
             }
             else
             if (license.Length == 8)
             {
-                license.Insert(3, "-");
-                license.Insert(6, "-");
+                license = license.Insert(3, "-");
+                license = license.Insert(6, "-");
             }
             else
             {
@@ -54,7 +54,7 @@ namespace dotnet_03b_9444_0180
             Close();
         }
         public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
+        {// the func let enter only numbers
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
