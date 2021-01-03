@@ -13,5 +13,30 @@ namespace BLAPI
         void Add_User(BO.User user);
         void Delete_user(BO.User user);
         #endregion
+
+        #region bus
+        BO.Bus Get_Bus(int lisence);
+        IEnumerable<BO.Bus> Get_All_Buses();
+        void Add_Bus(BO.Bus bus);
+        void Delete_Bus(BO.Bus bus);
+        void update_Bus(BO.Bus bus);
+        #endregion
+
+        #region line
+        BO.Line Get_Line(int id);
+        IEnumerable<BO.Line> Get_All_Lines();
+        void Add_Line(BO.Line line);
+        void Delete_Line(BO.Line line);
+        void update_Line(BO.Line line);
+        #endregion
+
+        #region line station
+        BO.LineStation Get_LineStation(int lineStationIndex);
+        IEnumerable<BO.LineStation> Get_All_LineStations();
+        void Add_LineStaton(BO.LineStation lineStation);
+        void Delete_LineStation(BO.LineStation lineStaion);
+        void update_LineStation(BO.LineStation lineStation);
+        #endregion
+
     }
 }

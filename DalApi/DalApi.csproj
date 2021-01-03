@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DLconfig.cs" />
+    <Compile Include="DLFactory.cs" />
     <Compile Include="DO\Enums.cs" />
     <Compile Include="DO\Exeptions.cs" />
+    <Compile Include="DO\RunNumbers.cs" />
     <Compile Include="DO\Tools.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="DO\AdjacentStations.cs" />

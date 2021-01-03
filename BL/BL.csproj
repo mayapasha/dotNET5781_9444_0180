@@ -46,6 +46,7 @@
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusOnTrip.cs" />
     <Compile Include="BO\Enums.cs" />
+    <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\Line.cs" />
     <Compile Include="BO\LineStation.cs" />
     <Compile Include="BO\LineTrip.cs" />
@@ -54,16 +55,13 @@
     <Compile Include="BO\Trip.cs" />
     <Compile Include="BO\User.cs" />
     <Compile Include="BLImp.cs" />
+    <Compile Include="DeepCopyUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DalApi\DalApi.csproj">
       <Project>{241f3eed-8b42-411d-9562-b81b9eef0490}</Project>
       <Name>DalApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DalObject\DalObject.csproj">
-      <Project>{bc30c132-01cc-4c9b-ab64-ae43b0bb2bf2}</Project>
-      <Name>DalObject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

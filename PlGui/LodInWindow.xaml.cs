@@ -10,25 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLAPI;
 
 namespace PlGui
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LodInWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LodInWindow : Window
     {
-        public MainWindow()
+        public LodInWindow()
         {
-            
             InitializeComponent();
         }
 
-        private void exist_User_Click(object sender, RoutedEventArgs e)
+        private void benter_Click(object sender, RoutedEventArgs e)
         {
+            
+            //לבדוק אם קיים משתמש כזה אם כן לבדוק אם הוא מנהל אם כן לפתוח חלון מתאים
 
+            if(tbusername.Text==BO.User.)
         }
     }
 }

@@ -40,7 +40,7 @@ namespace DalApi
         #endregion
 
         #region line station
-        DO.LineStation Get_LineStation(int id);
+        DO.LineStation Get_LineStation(int linestationIndex);
         IEnumerable<DO.LineStation> Get_All_LineStations();
         void Add_LineStation(DO.LineStation lineStation);
         void Delete_LineStation(DO.LineStation lineStation);

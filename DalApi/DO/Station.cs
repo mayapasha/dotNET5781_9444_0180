@@ -12,6 +12,7 @@ namespace DO
         public string Name { get; set; }
         public int Longitude { get; set; }
         public int Lattitude { get; set; }
+        public bool Is_Active { get; set; }
 
     }
 }

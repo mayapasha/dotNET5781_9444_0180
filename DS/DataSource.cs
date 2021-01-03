@@ -14,10 +14,13 @@ namespace DS
         public static List<LineStation> ListLineStations;//10
         public static List<Bus> ListBuses;//20
         public static List<User> ListUsers;
-
+        
         static DataSource()
         {
+            //DO.RunNumbers.Run_Number_Line_Station = 0;
+
             InitAllLists();
+            DO.RunNumbers.Run_Number_Line_Station = 0;
         }
         static void InitAllLists()
         {
@@ -85,7 +88,7 @@ namespace DS
             #endregion
 
             #region listLine
-
+            
             #endregion
         }
 

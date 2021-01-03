@@ -1,0 +1,17 @@
+﻿<Window x:Class="PlGui.LodInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlGui"
+        mc:Ignorable="d"
+        Title="LodInWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="lusername" Content="Enter your user name:" HorizontalAlignment="Left" Margin="168,143,0,0" VerticalAlignment="Top" Width="224" FontSize="20"/>
+        <Label Content="Enter your password:" HorizontalAlignment="Left" Margin="168,208,0,0" VerticalAlignment="Top" Height="37" Width="220" FontSize="20"/>
+        <TextBox x:Name="tbusername" HorizontalAlignment="Left" Height="23" Margin="397,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="tbpassword" HorizontalAlignment="Left" Height="23" Margin="431,208,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="benter" Content="enter" HorizontalAlignment="Left" Margin="272,294,0,0" VerticalAlignment="Top" Width="75" Click="benter_Click"/>
+
+    </Grid>
+</Window>
