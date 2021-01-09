@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EA1B029A-1A33-45FD-AEE5-FE4D82E85089}</ProjectGuid>
+    <ProjectGuid>{ACD13D1C-DC5A-49FF-BFC2-C7C37103C118}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PlGui</RootNamespace>
     <AssemblyName>PlGui</AssemblyName>
@@ -55,7 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="LodInWindow.xaml">
+    <Page Include="AddLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -63,12 +71,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddLineWindow.xaml.cs">
+      <DependentUpon>AddLineWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LodInWindow.xaml.cs">
-      <DependentUpon>LodInWindow.xaml</DependentUpon>
+    <Compile Include="DeleteLineWindow.xaml.cs">
+      <DependentUpon>DeleteLineWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LineInfoWindow.xaml.cs">
+      <DependentUpon>LineInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -9,7 +9,7 @@ using DO;
 
 namespace Dal
 {
-    sealed class DalObject : IDL
+    sealed class DLObject : IDL
     {
         #region singelton
         static readonly DLObject instance = new DLObject();
@@ -271,7 +271,9 @@ public void Update_LineStation(LineStation lineStation)
             }
             else
             {
-                DataSource.ListLineStations.Add(lineStation.Clone());
+                var doLineStation = lineStation.Clone();
+                doLineStation.LineStationIndex = ++RunNumbers.Run_Number_Line_Station;
+                DataSource.ListLineStations.Add(doLineStation);
             }
         }
         #endregion

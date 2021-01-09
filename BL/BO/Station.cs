@@ -12,6 +12,6 @@ namespace BO
         public string Name { get; set; }
         public int Longitude { get; set; }
         public int Lattitude { get; set; }
-        public IEnumerable<Line> List_Of_Lines;
+    
     }
 }

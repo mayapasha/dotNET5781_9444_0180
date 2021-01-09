@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLconfig.cs" />
+    <Compile Include="DLConfig.cs" />
     <Compile Include="DLFactory.cs" />
     <Compile Include="DO\Enums.cs" />
     <Compile Include="DO\Exeptions.cs" />

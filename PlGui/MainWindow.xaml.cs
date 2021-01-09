@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLAPI;
 
 namespace PlGui
 {
@@ -20,15 +21,17 @@ namespace PlGui
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static IBL bl = BLFactory.GetBL("1");
+
         public MainWindow()
         {
-            
             InitializeComponent();
         }
 
-        private void exist_User_Click(object sender, RoutedEventArgs e)
+        private void b_line_Click(object sender, RoutedEventArgs e)
         {
-
+            LineInfoWindow lineInfoWindow = new LineInfoWindow();
+            lineInfoWindow.Show();
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DalApi;
 using BLAPI;
+using System.Threading;
 using BO;
 
 namespace BL
@@ -241,7 +240,7 @@ namespace BL
                    select LineDoBoAdapter(item);
         }
 
-        public void Add_Line(Line line)
+        public void Add_Line(BO.Line line)
         {
             try
             {
@@ -258,6 +257,11 @@ namespace BL
         {
             try
             {
+                foreach (var item in line.List_Of_LineStation)
+                {
+                    DO.LineStation lineStationDO = LineStationBoDoAdapter(item);
+                    Delete_LineStation(lineStationDO);
+                }
                 DO.Line lineDO = LineBoDoAdapter(line);
                 dl.Delete_Line(lineDO);
             }

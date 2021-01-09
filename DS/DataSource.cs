@@ -8,13 +8,14 @@ namespace DS
 {
     public static class DataSource
     {
+       
         public static Random r = new Random();
         public static List<Station> ListStations;//50
         public static List<Line> ListLines;//10
-        public static List<LineStation> ListLineStations;//10
+        public static List<LineStation> ListLineStations;//100
         public static List<Bus> ListBuses;//20
         public static List<User> ListUsers;
-        
+
         static DataSource()
         {
             //DO.RunNumbers.Run_Number_Line_Station = 0;
@@ -33,6 +34,7 @@ namespace DS
                 s.Code = i;
                 s.Lattitude = r.Next() * (2) + 31;
                 s.Longitude = r.Next() * (1) + 34;
+
                 ListStations.Add(s);
             }
             ListStations[0].Name = "Masof riding";
@@ -88,9 +90,68 @@ namespace DS
             #endregion
 
             #region listLine
-            
+            for (int i = 0; i < 10; i++)
+            {
+                ListLines[i].Id = i;
+                ListLines[i].Code = r.Next(1, 100);
+                ListLines[i].Area = (DO.Enums.Areas)r.Next(0, 4);
+                ListLines[i].FirstStation = ListStations[i].Code;
+                int random = r.Next(0, 10);
+                while (i == random)
+                {
+                    random = r.Next(0, 10);
+                }
+                ListLines[i].LastStation = ListStations[ListStations.Count() - i].Code;
+            }
             #endregion
-        }
+
+            #region  listLineStation
+           
+                /*
+                int index_linestation = 0;
+                int k = 1;
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+
+                        ListLineStations[index_linestation].LineId = ListLines[i].Code;
+                        if (j == 0)
+                        {
+                            ListLineStations[index_linestation].Station = ListLines[i].FirstStation;
+                        }
+                        if (j == 9)
+                        {
+                            ListLineStations[index_linestation].Station = ListLines[i].LastStation;
+                        }
+                        else
+                        {
+                            if (ListStations[i * k + j].Code == ListLines[i].FirstStation || ListStations[i * k + j].Code == ListLines[i].LastStation)
+                            {
+
+                                ListLineStations[index_linestation].Station = ListStations[i * k + j + 1].Code;
+                            }
+                            ListLineStations[index_linestation].Station = ListStations[i * k + j ].Code;
+                        }
+                        ListLineStations[index_linestation].LineStationIndex = j;
+                        index_linestation++;
+                    }
+                    if(i==2)
+                    {
+                        k++;
+                    }
+                    if(i==5)
+                    {
+                        k++;
+                    }
+                    if(i==7)
+                    {
+                        k++;
+                    }
+                }
+                  */
+                #endregion
+            }
 
     }
     
