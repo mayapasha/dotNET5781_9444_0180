@@ -5,12 +5,46 @@ using DalApi;
 using BLAPI;
 using System.Threading;
 using BO;
-
 namespace BL
 {
     internal class BLImp : IBL
     {
         IDL dl = DLFactory.GetDL();
+        //BO.AdjacentStations
+        void IBL.AddStationToLine(BO.Station s, BO.Line l, BO.LineStation ls)
+        {
+            foreach (var item in l.List_Of_LineStation)
+            {
+                if (item.Station == s.Code)
+                {
+                    throw new Exceptions.Add_Existing_Item_Exception("the station already exist in this line");
+                }
+            }
+            int ind = ls.LineStationIndex;
+            ls.NextStation = s.Code;
+            BO.LineStation lsnew = new LineStation();
+            lsnew.LineId = l.Id;
+            lsnew.Station = s.Code;
+            lsnew.PrevStation = ls.Station;
+            lsnew.LineStationIndex = ind + 1;
+            int counter = 0;
+            foreach (var item in l.List_Of_LineStation)
+            {
+                if (counter == ind + 1)
+                {
+                    lsnew.NextStation = item.Station;
+                    item.LineStationIndex = ind + 2;
+                    item.PrevStation = lsnew.Station;
+
+                }
+                else if (counter > ind + 2)
+                {
+                    item.LineStationIndex += 1;
+                }
+                counter++;
+            }
+            dl.Add_LineStation(LineStationBoDoAdapter(lsnew));
+        }
         #region user
         /// <summary>
         /// the func transform user type do to user type bo
@@ -260,7 +294,7 @@ namespace BL
                 foreach (var item in line.List_Of_LineStation)
                 {
                     DO.LineStation lineStationDO = LineStationBoDoAdapter(item);
-                    Delete_LineStation(lineStationDO);
+                    //Delete_LineStation(lineStationDO);
                 }
                 DO.Line lineDO = LineBoDoAdapter(line);
                 dl.Delete_Line(lineDO);
@@ -283,7 +317,18 @@ namespace BL
                 throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
             }
         }
+        public IEnumerable<BO.Station> Line_Station_To_Station(IEnumerable<LineStation> lineStations, int id)
+        {
+            IEnumerable<DO.Station> s = dl.Get_All_Stations();
+            IEnumerable<BO.Station> stationsBO = from item in s
+                                                 select StationDoBoAdapter(item);
 
+            IEnumerable<BO.Station> stations = from item in lineStations
+                                               from item1 in stationsBO
+                                               where item.Station == item1.Code
+                                               select item1;
+            return stations;
+        }
         #endregion
         #region line station
         BO.LineStation LineStationDoBoAdapter(DO.LineStation lineStationDO)
@@ -372,8 +417,71 @@ namespace BL
             }
         }
 
-      
-        #endregion
 
+
+
+        #endregion
+        #region station
+        BO.Station StationDoBoAdapter(DO.Station StationDO)
+        {
+            BO.Station StationBO = new BO.Station();
+
+            int StationIndex = StationDO.Code;
+            try
+            {
+                StationDO = dl.Get_Station(StationDO.Code);
+            }
+            catch (DO.Item_not_found_Exception ex)
+            {
+                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+            }
+            StationDO.CopyPropertiesTo(StationBO);
+
+            return StationBO;
+        }
+        DO.Station StationBoDoAdapter(BO.Station StationBO)
+        {
+            DO.Station StationDO = new DO.Station();
+
+            int StationIndex = StationBO.Code;
+
+            StationBO.CopyPropertiesTo(StationDO);
+
+            return StationDO;
+        }
+        IEnumerable<Station> Get_All_Stations()
+        {
+            return from item in dl.Get_All_Stations()
+                   select StationDoBoAdapter(item);
+        }
+
+        IEnumerable<Station> IBL.Get_All_Stations()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+        #region AdjacentStations
+
+        public AdjacentStations Get_AdjacentStation(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAdjacentStation(AdjacentStations s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteAdjacentStation(AdjacentStations s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAdjacentStation(AdjacentStations s)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

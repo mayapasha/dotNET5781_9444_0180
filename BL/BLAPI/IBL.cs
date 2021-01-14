@@ -7,6 +7,7 @@ namespace BLAPI
 {
     public interface IBL
     {
+        void AddStationToLine(BO.Station s, BO.Line l, BO.LineStation ls);
         #region user
         BO.User Get_User(string username);
         IEnumerable<BO.User> Get_All_Users();
@@ -28,6 +29,7 @@ namespace BLAPI
         void Add_Line(BO.Line line);
         void Delete_Line(BO.Line line);
         void update_Line(BO.Line line);
+        IEnumerable<BO.Station> Line_Station_To_Station(IEnumerable<BO.LineStation> lineStations, int id);
         #endregion
 
         #region line station
@@ -38,5 +40,14 @@ namespace BLAPI
         void update_LineStation(BO.LineStation lineStation);
         #endregion
 
+        #region station
+        IEnumerable<BO.Station> Get_All_Stations();
+        #endregion
+        #region AdjacentSatations
+        BO.AdjacentStations Get_AdjacentStation(int x, int y);
+        void AddAdjacentStation(BO.AdjacentStations s);
+        void DeleteAdjacentStation(BO.AdjacentStations s);
+        void UpdateAdjacentStation(BO.AdjacentStations s);
+        #endregion
     }
 }

@@ -46,5 +46,13 @@ namespace DalApi
         void Delete_LineStation(DO.LineStation lineStation);
         void Update_LineStation(DO.LineStation lineStation);
         #endregion
+        #region adjacent stations
+        DO.AdjacentStations GetAdjacentStations(int x, int y);
+        void DeleteAdjacentStations(DO.AdjacentStations x);
+        void AddAdjacentStation(DO.AdjacentStations x);
+        void UpdateAdjecentStation(DO.AdjacentStations x);
+        IEnumerable<DO.AdjacentStations> GetAllAdjacentStations();
+
+        #endregion
     }
 }

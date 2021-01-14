@@ -1,0 +1,45 @@
+﻿<Window x:Class="PlGui.UpdateLineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlGui"
+        mc:Ignorable="d"
+        Title="UpdateLineWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="StationTemplate" DataType="line.List_Of_Line_Stations">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="station name:"/>
+                <Label Grid.Column="1" Content="{Binding Path=Name}"/>
+                <Label Grid.Column="2" Content="distance: " Margin="10,2,10,10" Background="White" BorderBrush="{x:Null}" Foreground="#FF4B1266"/>
+                <Label Name="l_dis" Grid.Column="3"/>
+                <Label Grid.Column="4" Content="time: " Margin="10,2,10,10" Background="White" BorderBrush="{x:Null}" Foreground="#FF4B1266"/>
+                <Label Name="l_time" Grid.Column="5" />
+                <Button x:Name="b_add_station" Grid.Column="6" Content="add station" Click="b_add_station_Click"/>
+                <Button x:Name="b_dis_time" Grid.Column="7" Content="update time or distande" Click="b_dis_time_Click"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+
+        <ListBox x:Name="lb_line"  HorizontalAlignment="Left" Height="241" Margin="32,123,0,0" VerticalAlignment="Top" Width="739"   />
+        <Button x:Name="b_save" Content="save" HorizontalAlignment="Left" Margin="696,389,0,0" VerticalAlignment="Top" Width="75" Click="save_Click"/>
+        <Label Content="Code:" FontSize="17" HorizontalAlignment="Left" Margin="32,10,0,0" VerticalAlignment="Top" Height="33" Width="101"/>
+        <Label Content="Area:" FontSize="17" HorizontalAlignment="Left" Margin="32,57,0,0" VerticalAlignment="Top" Height="30" Width="87"/>
+        <TextBox x:Name="tb_code" FontSize="17" HorizontalAlignment="Left" Height="33" Margin="177,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
+        <ComboBox x:Name="cb_area" FontSize="17" HorizontalAlignment="Left" Margin="177,57,0,0" VerticalAlignment="Top" Width="138" Height="30"/>
+    </Grid>
+</Window>

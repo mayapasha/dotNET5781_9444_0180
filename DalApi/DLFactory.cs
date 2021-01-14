@@ -68,7 +68,7 @@ namespace DalApi
             { // If the type is not found - the implementation is not correct - it looks like the class name is wrong...
                 throw new DLConfigException($"Class not found due to a wrong namespace or/and class name: {dlPackageName}:{dlNameSpace}.{dlClass}", ex);
             }
-            // *** Get concrete Dal implementation's Instance
+            // *** Get concrete Dal implementation's InstancedotNet_02_9444_0180
             // Get property info for public static property named "Instance" (in the dal implementation class- taken above)
             // If the property is not found or it's not public or not static then it is not properly implemented
             // as a Singleton...

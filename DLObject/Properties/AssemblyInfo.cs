@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DalObject")]
+[assembly: AssemblyTitle("DLObject")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard")]
-[assembly: AssemblyProduct("DalObject")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2020")]
+[assembly: AssemblyProduct("DLObject")]
+[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bc30c132-01cc-4c9b-ab64-ae43b0bb2bf2")]
+[assembly: Guid("3fac2bc1-3327-491a-a077-8f81cd3fd114")]
 
 // Version information for an assembly consists of the following four values:
 //

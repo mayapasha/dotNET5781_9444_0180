@@ -21,40 +21,40 @@ namespace PlGui
     /// </summary>
     public partial class LineInfoWindow : Window
     {
-        BO.Line b = new BO.Line();
-        private BO.Line currentDisplayBusLine;
-        public static ObservableCollection<BO.Line> lines { get; set; }
+        PO.Line l = new PO.Line();
+        private PO.Line currentDisplayLine;
+        public static ObservableCollection<PO.Line> lines { get; set; }
         public LineInfoWindow()
         {
-            lines = new ObservableCollection<BO.Line>();
+            lines = new ObservableCollection<PO.Line>();
             InitializeComponent();
             try
             {
-                lines = (ObservableCollection<BO.Line>)MainWindow.bl.Get_All_Lines();
+                lines = (ObservableCollection<PO.Line>)MainWindow.bl.Get_All_Lines();
                 
             }
             catch (Exception)
             {
                 MessageBox.Show("ERROR");
-                throw;
+                
             }
-            cbBusLines.ItemsSource = lines;
-            cbBusLines.DisplayMemberPath = " BO.Line.id ";
-            cbBusLines.SelectedIndex = 0;
+            cbLines.ItemsSource = lines;
+            cbLines.DisplayMemberPath = " PO.Line.Code ";
+            cbLines.SelectedIndex = 0;
         }
-        private void ShowBusLine(int index)
+        private void ShowLine(int index)
         {
-            currentDisplayBusLine = lines[index];
-            UpGrid.DataContext = currentDisplayBusLine;
-            lbBusLineStations.DataContext = currentDisplayBusLine.List_Of_LineStation;
+            currentDisplayLine = lines[index];
+            UpGrid.DataContext = currentDisplayLine;
+            lbLineStations.DataContext = currentDisplayLine.List_Of_Line_Stations;
         }
-        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BO.Line).Code);
+            ShowLine((cbLines.SelectedValue as PO.Line).Code);
 
         }
 
-        private void lbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lbLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
 
@@ -71,6 +71,13 @@ namespace PlGui
         {
             DeleteLineWindow deleteLineWindow = new DeleteLineWindow();
             deleteLineWindow.Show();
+        }
+
+        private void b_update_line_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Line line = (PO.Line)cbLines.SelectedItem;
+            UpdateLineWindow updateLineWindow = new UpdateLineWindow(line);       
+            updateLineWindow.ShowDialog();
         }
     }
 }

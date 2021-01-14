@@ -33,5 +33,10 @@ namespace PlGui
             LineInfoWindow lineInfoWindow = new LineInfoWindow();
             lineInfoWindow.Show();
         }
+
+        private void b_station_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

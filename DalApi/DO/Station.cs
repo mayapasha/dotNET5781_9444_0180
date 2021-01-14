@@ -10,8 +10,8 @@ namespace DO
     {
         public int Code { get; set; }
         public string Name { get; set; }
-        public int Longitude { get; set; }
-        public int Lattitude { get; set; }
+        public double Longitude { get; set; }
+        public double Lattitude { get; set; }
         public bool Is_Active { get; set; }
 
     }

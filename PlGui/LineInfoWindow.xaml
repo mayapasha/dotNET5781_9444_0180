@@ -6,6 +6,35 @@
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
         Title="LineInfoWindow" Height="450" Width="800" Background="#FFBDF7F5">
+    <Window.Resources>
+        <DataTemplate x:Key="LineStationTemplate" DataType="PO.LineStation">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="code:"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Code}"/>
+                <Label Grid.Column="2" Content="station name :"/>
+                <TextBlock Grid.Column="3" Text="{Binding Path=Name}"/>
+                <Label Content="distance" Grid.Column="4" FontSize="18"/>
+                <Label x:Name="l_dis" Grid.Column="5" FontSize="18" Content="{Binding Path=PO.AdjacentStation.Distance}"/>
+                <Label Content="time" Grid.Column="6" FontSize="18"/>
+                <Label x:Name="l_time" Grid.Column="7" FontSize="18" Content="{Binding Path=PO.AdjacentStation.Time}"/>
+
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid Name="MainGrid" Background="{x:Null}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="640*"/>
@@ -15,23 +44,24 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
-VerticalAlignment="Stretch" Width="auto" Grid.ColumnSpan="2">
+        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" VerticalAlignment="Stretch" Width="auto" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="23*"/>
             </Grid.ColumnDefinitions >
-            <Label  HorizontalAlignment="Left" Height="25" Content="Bus Line Number:" VerticalAlignment="Top" Width="156" Margin="32,24,0,0" FontFamily="Ink Free" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Background="#FFEE2B84"/>
-            <Label Background="#FFEE2B84" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="122,19,0,0"  Content="Area:" VerticalAlignment="Top" Width="66" FontFamily="Ink Free" FontWeight="Bold" FontSize="18" Foreground="White" BorderBrush="{x:Null}"/>
-            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="40,10,38,0" VerticalAlignment="Stretch" Width="120" SelectionChanged="cbBusLines_SelectionChanged" Background="#FFF1A0BB" BorderBrush="{x:Null}"   />
-            <TextBox x:Name="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="39,21,39,24" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Width="120" FontFamily="Ink Free" Foreground="#FF9B3258" SelectionBrush="{x:Null}" BorderBrush="{x:Null}"/>
+            <Label  HorizontalAlignment="Left" Height="28" Content="Line Number:" VerticalAlignment="Top" Width="156" Margin="32,19,0,0" FontFamily="Ink Free" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Background="#FFEE2B84" Grid.ColumnSpan="2"/>
+            <Label Background="#FFEE2B84" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="122,19,0,0"  Content="Area:" VerticalAlignment="Top" Width="66" FontFamily="Ink Free" FontWeight="Bold" FontSize="18" Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="cbLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="40,10,104,0" VerticalAlignment="Stretch" Width="120" Background="#FFF1A0BB" BorderBrush="{x:Null}" Grid.ColumnSpan="2"   />
+            <TextBox x:Name="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="39,21,105,3" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Width="120" FontFamily="Ink Free" Foreground="#FF9B3258" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="3"/>
+
         </Grid>
-        <ListBox x:Name="lbBusLineStations" HorizontalAlignment="Left" Height="220" Margin="36,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="722" ItemsSource="{Binding}" BorderBrush="{x:Null}" Foreground="#FFEE6F99" RenderTransformOrigin="0.5,0.5" Background="#FFF5CCE1" Grid.ColumnSpan="2" SelectionChanged="lbBusLineStations_SelectionChanged"/>
+        <ListBox x:Name="lbLineStations" HorizontalAlignment="Left" Height="220" Margin="36,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="722"  ItemsSource="{Binding}" ItemTemplate="{StaticResource LineStationTemplate}" BorderBrush="{x:Null}" Foreground="#FFEE6F99" RenderTransformOrigin="0.5,0.5" Background="#FFF5CCE1" Grid.ColumnSpan="2" SelectionChanged="lbLineStations_SelectionChanged"/>
         <TextBox HorizontalAlignment="Left" Height="51" Margin="23,311,0,0" TextWrapping="Wrap" Text="L&amp;M" VerticalAlignment="Top" Width="120" FontSize="36" FontFamily="Rockwell Extra Bold" Background="{x:Null}" Foreground="#FFEC357A" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="b_add_line" Content="add line" HorizontalAlignment="Left" Margin="36,284,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="43" Click="b_add_line_Click"/>
         <Button x:Name="b_delete_line" Content="delete line" HorizontalAlignment="Left" Margin="217,284,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Height="43" Click="b_delete_line_Click"/>
+        <Button x:Name="b_update_line" Content="update line" HorizontalAlignment="Left" Margin="430,284,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Height="43" Click="b_update_line_Click"/>
     </Grid>
 </Window>
 

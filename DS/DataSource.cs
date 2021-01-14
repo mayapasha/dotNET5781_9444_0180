@@ -15,25 +15,33 @@ namespace DS
         public static List<LineStation> ListLineStations;//100
         public static List<Bus> ListBuses;//20
         public static List<User> ListUsers;
+        public static List<AdjacentStations> ListAdjacentStations;
+        public static List<LineTrip> listLineTrip;
+        
 
         static DataSource()
         {
             //DO.RunNumbers.Run_Number_Line_Station = 0;
-
+            
             InitAllLists();
+            
             DO.RunNumbers.Run_Number_Line_Station = 0;
         }
-        static void InitAllLists()
+        public static void InitAllLists()
         {
+
+
             #region listStations
             ListStations = new List<Station>();
 
             for (int i = 1; i < 51; i++)
             {
-                Station s = new Station();
-                s.Code = i;
-                s.Lattitude = r.Next() * (2) + 31;
-                s.Longitude = r.Next() * (1) + 34;
+                Station s = new Station
+                {
+                    Code = i,
+                    Lattitude = r.NextDouble() * (2.3) + 31,
+                    Longitude = r.NextDouble() * (1.2) + 34
+                };
 
                 ListStations.Add(s);
             }
@@ -90,68 +98,299 @@ namespace DS
             #endregion
 
             #region listLine
-            for (int i = 0; i < 10; i++)
+            ListLines = new List<Line>
             {
-                ListLines[i].Id = i;
-                ListLines[i].Code = r.Next(1, 100);
-                ListLines[i].Area = (DO.Enums.Areas)r.Next(0, 4);
-                ListLines[i].FirstStation = ListStations[i].Code;
-                int random = r.Next(0, 10);
-                while (i == random)
+                new Line
                 {
-                    random = r.Next(0, 10);
+                    Id = 0,
+                    Code = 33,
+                    Area = Enums.Areas.Center,
+                    Is_Active = true,
+                    FirstStation = 2,
+                    LastStation = 5
+                },
+                new Line 
+                { 
+                    Id = 1,
+                    Code = 61, 
+                    Area = Enums.Areas.Center, 
+                    Is_Active = true, 
+                    FirstStation = 1, 
+                    LastStation = 7 
+                },
+                new Line 
+                { 
+                    Id = 2, 
+                    Code = 67, 
+                    Area = Enums.Areas.Center, 
+                    Is_Active = true, 
+                    FirstStation = 2, 
+                    LastStation = 6 
+                },
+                new Line
+                {
+                    Id = 3,
+                    Code = 85,
+                    Area = Enums.Areas.Jerusalem,
+                    Is_Active = true,
+                    FirstStation = 6,
+                    LastStation =4
+                },
+                new Line
+                {
+                    Id = 4,
+                    Code = 131,
+                    Area = Enums.Areas.North,
+                    Is_Active = true,
+                    FirstStation = 1,
+                    LastStation = 3
+                },
+                new Line
+                {
+                    Id = 5,
+                    Code = 999,
+                    Area = Enums.Areas.South,
+                    Is_Active = true,
+                    FirstStation = 8,
+                    LastStation = 4
+                },
+                new Line
+                {
+                    Id = 6,
+                    Code = 44,
+                    Area = Enums.Areas.Jerusalem,
+                    Is_Active = true,
+                    FirstStation = 5,
+                    LastStation = 9
+                },
+                new Line
+                {
+                    Id = 7,
+                    Code = 430,
+                    Area = Enums.Areas.Center,
+                    Is_Active = true,
+                    FirstStation = 2,
+                    LastStation = 8
+                },
+                new Line
+                {
+                    Id = 8,
+                    Code = 2,
+                    Area = Enums.Areas.Center,
+                    Is_Active = true,
+                    FirstStation = 9,
+                    LastStation = 1
+                },
+                new Line
+                {
+                    Id = 9,
+                    Code = 255,
+                    Area = Enums.Areas.Center,
+                    Is_Active = true,
+                    FirstStation = 3,
+                    LastStation = 8
+                },
+
+            };
+            
+            #endregion
+
+            #region listAdjacentStations
+            ListAdjacentStations = new List<AdjacentStations>();
+            for (int i = 0; i < ListStations.Count; i++)
+            {
+                for (int j = 0; j < ListStations.Count; j++)
+                {
+                    DO.AdjacentStations a = new AdjacentStations();
+                    if (i != j)
+                    {
+                        a.Station1 = ListStations[j].Code;
+                        a.Station2 = ListStations[i].Code;
+                        double x = ListStations[j].Lattitude - ListStations[i].Lattitude;
+                        double y = ListStations[j].Longitude - ListStations[i].Longitude;
+                        x = Math.Pow(x, 2);
+                        y = Math.Pow(y, 2);
+                        a.Distance = Math.Sqrt(x + y);
+                        a.Time = new TimeSpan(0, r.Next(0, 15), r.Next(0, 59));
+                    }
+                    ListAdjacentStations.Add(a);
                 }
-                ListLines[i].LastStation = ListStations[ListStations.Count() - i].Code;
             }
             #endregion
 
             #region  listLineStation
-           
-                /*
-                int index_linestation = 0;
-                int k = 1;
-                for (int i = 0; i < 10; i++)
+
+            /*
+            int index_linestation = 0;
+            int k = 1;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
                 {
-                    for (int j = 0; j < 10; j++)
-                    {
 
-                        ListLineStations[index_linestation].LineId = ListLines[i].Code;
-                        if (j == 0)
+                    ListLineStations[index_linestation].LineId = ListLines[i].Code;
+                    if (j == 0)
+                    {
+                        ListLineStations[index_linestation].Station = ListLines[i].FirstStation;
+                    }
+                    if (j == 9)
+                    {
+                        ListLineStations[index_linestation].Station = ListLines[i].LastStation;
+                    }
+                    else
+                    {
+                        if (ListStations[i * k + j].Code == ListLines[i].FirstStation || ListStations[i * k + j].Code == ListLines[i].LastStation)
                         {
-                            ListLineStations[index_linestation].Station = ListLines[i].FirstStation;
-                        }
-                        if (j == 9)
-                        {
-                            ListLineStations[index_linestation].Station = ListLines[i].LastStation;
-                        }
-                        else
-                        {
-                            if (ListStations[i * k + j].Code == ListLines[i].FirstStation || ListStations[i * k + j].Code == ListLines[i].LastStation)
-                            {
 
-                                ListLineStations[index_linestation].Station = ListStations[i * k + j + 1].Code;
-                            }
-                            ListLineStations[index_linestation].Station = ListStations[i * k + j ].Code;
+                            ListLineStations[index_linestation].Station = ListStations[i * k + j + 1].Code;
                         }
-                        ListLineStations[index_linestation].LineStationIndex = j;
-                        index_linestation++;
+                        ListLineStations[index_linestation].Station = ListStations[i * k + j ].Code;
                     }
-                    if(i==2)
-                    {
-                        k++;
-                    }
-                    if(i==5)
-                    {
-                        k++;
-                    }
-                    if(i==7)
-                    {
-                        k++;
-                    }
+                    ListLineStations[index_linestation].LineStationIndex = j;
+                    index_linestation++;
                 }
-                  */
-                #endregion
+                if(i==2)
+                {
+                    k++;
+                }
+                if(i==5)
+                {
+                    k++;
+                }
+                if(i==7)
+                {
+                    k++;
+                }
             }
+              */
+            #endregion
+
+            #region list line trip
+            listLineTrip = new List<LineTrip>
+            {
+                new LineTrip
+                {
+                    LineId=ListLines[0].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,15,0),
+                    StartAt=new TimeSpan(7,0,0),
+                    FinishAt=new TimeSpan(12,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[0].Id,
+                    Id=2,
+                    Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(12,0,0),
+                    FinishAt=new TimeSpan(16,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[0].Id,
+                    Id=3,
+                    Frequency=new TimeSpan(0,20,0),
+                    StartAt=new TimeSpan(16,0,0),
+                    FinishAt=new TimeSpan(23,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[1].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(12,0,0),
+                    FinishAt=new TimeSpan(16,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[2].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(2,0,0),
+                    StartAt=new TimeSpan(8,0,0),
+                    FinishAt=new TimeSpan(20,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[3].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,10,0),
+                    StartAt=new TimeSpan(7,0,0),
+                    FinishAt=new TimeSpan(18,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[3].Id,
+                    Id=2,
+                    Frequency=new TimeSpan(0,20,0),
+                    StartAt=new TimeSpan(18,0,0),
+                    FinishAt=new TimeSpan(0,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[4].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,0,0),
+                    StartAt=new TimeSpan(12,0,0),
+                    FinishAt=new TimeSpan(0,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[5].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(12,0,0),
+                    FinishAt=new TimeSpan(19,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[6].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,5,0),
+                    StartAt=new TimeSpan(5,0,0),
+                    FinishAt=new TimeSpan(13,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[7].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(1,0,0),
+                    StartAt=new TimeSpan(4,0,0),
+                    FinishAt=new TimeSpan(7,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[7].Id,
+                    Id=2,
+                    Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(7,0,0),
+                    FinishAt=new TimeSpan(16,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[7].Id,
+                    Id=3,
+                    Frequency=new TimeSpan(0,15,0),
+                    StartAt=new TimeSpan(16,0,0),
+                    FinishAt=new TimeSpan(17,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[8].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(12,0,0),
+                    FinishAt=new TimeSpan(16,0,0)
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[9].Id,
+                    Id=1,
+                    Frequency=new TimeSpan(0,20,0),
+                    StartAt=new TimeSpan(23,0,0),
+                    FinishAt=new TimeSpan(4,0,0)
+                }
+            };
+            #endregion
+        }
 
     }
     

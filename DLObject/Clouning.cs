@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dal
+namespace DL
 {
     static class Cloning
     {
@@ -22,3 +22,5 @@ namespace Dal
         }
     }
 }
+
+
