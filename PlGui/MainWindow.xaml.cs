@@ -36,7 +36,8 @@ namespace PlGui
 
         private void b_station_Click(object sender, RoutedEventArgs e)
         {
-
+            StationInfoWindow stationInfoWindow = new StationInfoWindow();
+            stationInfoWindow.Show();
         }
     }
 }

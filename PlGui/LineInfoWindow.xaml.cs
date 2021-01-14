@@ -30,12 +30,14 @@ namespace PlGui
             InitializeComponent();
             try
             {
-                lines = (ObservableCollection<PO.Line>)MainWindow.bl.Get_All_Lines();
-                
+                IEnumerable<PO.Line> l = from item in MainWindow.bl.Get_All_Lines()
+                                         select PO.SwitchObjects.LineBoToPo(item);
+                lines = (ObservableCollection<PO.Line>)l;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("ERROR");
+                MessageBox.Show(ex.Message);
                 
             }
             cbLines.ItemsSource = lines;

@@ -28,9 +28,9 @@
                 <Label Grid.Column="2" Content="station name :"/>
                 <TextBlock Grid.Column="3" Text="{Binding Path=Name}"/>
                 <Label Content="distance" Grid.Column="4" FontSize="18"/>
-                <Label x:Name="l_dis" Grid.Column="5" FontSize="18" Content="{Binding Path=PO.AdjacentStation.Distance}"/>
+                <Label x:Name="l_dis" Grid.Column="5" FontSize="18" Content= "{Binding Path=Distance}"/>
                 <Label Content="time" Grid.Column="6" FontSize="18"/>
-                <Label x:Name="l_time" Grid.Column="7" FontSize="18" Content="{Binding Path=PO.AdjacentStation.Time}"/>
+                <Label x:Name="l_time" Grid.Column="7" FontSize="18" Content="{Binding Path=Time}"/>
 
             </Grid>
         </DataTemplate>
@@ -55,7 +55,6 @@
             <Label Background="#FFEE2B84" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="122,19,0,0"  Content="Area:" VerticalAlignment="Top" Width="66" FontFamily="Ink Free" FontWeight="Bold" FontSize="18" Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
             <ComboBox x:Name="cbLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="40,10,104,0" VerticalAlignment="Stretch" Width="120" Background="#FFF1A0BB" BorderBrush="{x:Null}" Grid.ColumnSpan="2"   />
             <TextBox x:Name="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="39,21,105,3" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Width="120" FontFamily="Ink Free" Foreground="#FF9B3258" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="3"/>
-
         </Grid>
         <ListBox x:Name="lbLineStations" HorizontalAlignment="Left" Height="220" Margin="36,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="722"  ItemsSource="{Binding}" ItemTemplate="{StaticResource LineStationTemplate}" BorderBrush="{x:Null}" Foreground="#FFEE6F99" RenderTransformOrigin="0.5,0.5" Background="#FFF5CCE1" Grid.ColumnSpan="2" SelectionChanged="lbLineStations_SelectionChanged"/>
         <TextBox HorizontalAlignment="Left" Height="51" Margin="23,311,0,0" TextWrapping="Wrap" Text="L&amp;M" VerticalAlignment="Top" Width="120" FontSize="36" FontFamily="Rockwell Extra Bold" Background="{x:Null}" Foreground="#FFEC357A" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1" Grid.Row="1"/>

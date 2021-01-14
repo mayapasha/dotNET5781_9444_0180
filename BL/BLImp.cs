@@ -270,8 +270,17 @@ namespace BL
 
         public IEnumerable<Line> Get_All_Lines()
         {
-            return from item in dl.Get_All_Lines()
-                   select LineDoBoAdapter(item);
+
+            IEnumerable<Line> l = from item in dl.Get_All_Lines()
+                                  select LineDoBoAdapter(item);
+            foreach (var item in l)
+            {
+                item.List_Of_LineStation = from item1 in Get_All_LineStations()
+                                           where item1.LineId == item.Id
+                                           select item1;
+   
+            }
+            return l;
         }
 
         public void Add_Line(BO.Line line)
@@ -359,23 +368,39 @@ namespace BL
             return lineStationDO;
         }
         public LineStation Get_LineStation(int lineStationIndex)
-        {
-            DO.LineStation lineStationDO;
+        {          
             try
             {
-                lineStationDO = dl.Get_LineStation(lineStationIndex);
+                BO.LineStation b=LineStationDoBoAdapter(dl.Get_LineStation(lineStationIndex));
+                BO.AdjacentStations a = Get_AdjacentStation(b.Station, b.NextStation);
+                b.Distance = a.Distance;
+                b.Time = a.Time;
+                return b;
             }
             catch (DO.Item_not_found_Exception ex)
             {
                 throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-            return LineStationDoBoAdapter(lineStationDO);
+            }    
         }
 
         public IEnumerable<LineStation> Get_All_LineStations()
         {
-            return from item in dl.Get_All_LineStations()
-                   select LineStationDoBoAdapter(item);
+            IEnumerable<BO.LineStation> ls = from item in dl.Get_All_LineStations()
+                                             select LineStationDoBoAdapter(item);
+            foreach (var item in ls)
+            {
+                try
+                {
+                    BO.AdjacentStations a= Get_AdjacentStation(item.Station, item.NextStation);
+                    item.Distance = a.Distance;
+                    item.Time = a.Time;
+                }
+                catch(DO.Item_not_found_Exception ex)
+                {
+                    throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+                }
+            }
+            return ls;
         }
 
         public void Add_LineStaton(LineStation lineStation)
@@ -457,31 +482,113 @@ namespace BL
 
         IEnumerable<Station> IBL.Get_All_Stations()
         {
+            return from item in dl.Get_All_Stations()
+                   select StationDoBoAdapter(item);
+        }
+        public Station GetStation(int n)
+        {
+            try
+            {
+                return StationDoBoAdapter(dl.Get_Station(n));
+            }
+            catch(DO.Item_not_found_Exception ex)
+            {
+                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+            }
+            
+        }
+        public void AddStation(Station s)
+        {
+            try
+            {
+                dl.Add_Station(StationBoDoAdapter(s));
+            }
+            catch (DO.Add_Existing_Item_Exception ex)
+            {
+                throw new BO.Exceptions.Add_Existing_Item_Exception(ex.Message);
+            }
+        }
+
+        public void DeleteStation(Station s)
+        {
             throw new NotImplementedException();
         }
 
+        public void UpdateStation(Station s)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
         #region AdjacentStations
-
+        public BO.AdjacentStations AdjacentStationDoToBo(DO.AdjacentStations a)
+        {
+            BO.AdjacentStations b = new AdjacentStations();
+            b.Distance = a.Distance;
+            b.Station1 = a.Station1;
+            b.Station2 = a.Station2;
+            b.Time = a.Time;
+            return b;
+        }
+        public DO.AdjacentStations AdjacentStationBoToDo(BO.AdjacentStations a)
+        {
+            DO.AdjacentStations b = new DO.AdjacentStations();
+            b.Distance = a.Distance;
+            b.Station1 = a.Station1;
+            b.Station2 = a.Station2;
+            b.Time = a.Time;
+            return b;
+        }
+        
         public AdjacentStations Get_AdjacentStation(int x, int y)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return(AdjacentStationDoToBo( dl.GetAdjacentStations(x, y)));
+            }
+            catch(DO.Item_not_found_Exception ex)
+            {
+                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+            }
+        }
+        public void AddAdjacentStation(BO.AdjacentStations s)
+        {
+            try
+            {
+                dl.AddAdjacentStation(AdjacentStationBoToDo(s));   
+            }
+            catch (DO.Add_Existing_Item_Exception ex)
+            {
+                throw new BO.Exceptions.Add_Existing_Item_Exception(ex.Message);
+            }
+        }
+        public void DeleteAdjacentStation(BO.AdjacentStations s)
+        {
+            try
+            {
+                dl.DeleteAdjacentStations(AdjacentStationBoToDo(s));
+            }
+            catch (Exceptions.Item_not_found_Exception ex)
+            {
+
+                throw new Exceptions.Item_not_found_Exception(ex.Message);
+            }
         }
 
-        public void AddAdjacentStation(AdjacentStations s)
+        public void UpdateAdjacentStation(BO.AdjacentStations s)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dl.UpdateAdjecentStation(AdjacentStationBoToDo(s));
+            }
+            catch (Exceptions.Item_not_found_Exception ex)
+            {
+                throw new Exceptions.Item_not_found_Exception(ex.Message);
+            }
         }
 
-        public void DeleteAdjacentStation(AdjacentStations s)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public void UpdateAdjacentStation(AdjacentStations s)
-        {
-            throw new NotImplementedException();
-        }
+
         #endregion
     }
 }

@@ -109,23 +109,23 @@ namespace DS
                     FirstStation = 2,
                     LastStation = 5
                 },
-                new Line 
-                { 
+                new Line
+                {
                     Id = 1,
-                    Code = 61, 
-                    Area = Enums.Areas.Center, 
-                    Is_Active = true, 
-                    FirstStation = 1, 
-                    LastStation = 7 
+                    Code = 61,
+                    Area = Enums.Areas.Center,
+                    Is_Active = true,
+                    FirstStation = 1,
+                    LastStation = 7
                 },
-                new Line 
-                { 
-                    Id = 2, 
-                    Code = 67, 
-                    Area = Enums.Areas.Center, 
-                    Is_Active = true, 
-                    FirstStation = 2, 
-                    LastStation = 6 
+                new Line
+                {
+                    Id = 2,
+                    Code = 67,
+                    Area = Enums.Areas.Center,
+                    Is_Active = true,
+                    FirstStation = 2,
+                    LastStation = 6
                 },
                 new Line
                 {
@@ -192,7 +192,7 @@ namespace DS
                 },
 
             };
-            
+
             #endregion
 
             #region listAdjacentStations
@@ -219,16 +219,37 @@ namespace DS
             #endregion
 
             #region  listLineStation
+            ListLineStations = new List<LineStation>
+            {
+            new LineStation
+            {
+            LineId= 0,
+            Station = 2,
+            PrevStation= -1,
+            NextStation= 4,
+            LineStationIndex=1,
+            Is_Active=true
 
-            /*
-            int index_linestation = 0;
+            },
+            new LineStation
+            {
+            LineId= 0,
+            Station = 4,
+            PrevStation= 2,
+            NextStation= 10,
+            LineStationIndex=1,
+            Is_Active=true
+            }
+            //...
+            };
+            /*int index_linestation = 0;
             int k = 1;
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
 
-                    ListLineStations[index_linestation].LineId = ListLines[i].Code;
+                    ListLineStations[index_linestation].LineId = ListLines[i].Id;
                     if (j == 0)
                     {
                         ListLineStations[index_linestation].Station = ListLines[i].FirstStation;
@@ -260,9 +281,9 @@ namespace DS
                 if(i==7)
                 {
                     k++;
-                }
-            }
-              */
+                }*/
+        
+              
             #endregion
 
             #region list line trip

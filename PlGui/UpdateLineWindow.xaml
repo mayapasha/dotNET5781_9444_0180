@@ -25,9 +25,9 @@
                 <Label Grid.Column="0" Content="station name:"/>
                 <Label Grid.Column="1" Content="{Binding Path=Name}"/>
                 <Label Grid.Column="2" Content="distance: " Margin="10,2,10,10" Background="White" BorderBrush="{x:Null}" Foreground="#FF4B1266"/>
-                <Label Name="l_dis" Grid.Column="3"/>
+                <Label Name="l_dis" Content="{Binding Path=Distance}" Grid.Column="3"/>
                 <Label Grid.Column="4" Content="time: " Margin="10,2,10,10" Background="White" BorderBrush="{x:Null}" Foreground="#FF4B1266"/>
-                <Label Name="l_time" Grid.Column="5" />
+                <Label Name="l_time" Content="{Binding Path=Time}" Grid.Column="5" />
                 <Button x:Name="b_add_station" Grid.Column="6" Content="add station" Click="b_add_station_Click"/>
                 <Button x:Name="b_dis_time" Grid.Column="7" Content="update time or distande" Click="b_dis_time_Click"/>
             </Grid>

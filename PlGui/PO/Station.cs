@@ -39,8 +39,8 @@ namespace PO
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(Name)));
             }
         }
-        private int _longitude;
-        public int Longitude
+        private double _longitude;
+        public double Longitude
         {
             get
             {
@@ -53,8 +53,8 @@ namespace PO
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(Longitude)));
             }
         }
-        private int _lattitude;
-        public int Lattitude 
+        private double _lattitude;
+        public double Lattitude 
         {
             get
             {

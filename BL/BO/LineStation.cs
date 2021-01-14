@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-   public class LineStation
+   public class LineStation :AdjacentStations
     {
         public int LineId { get; set; }
         public int Station { get; set; }

@@ -55,20 +55,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddStationWindow.xaml.cs">
+      <DependentUpon>AddStationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChangeDisTimeWindow.xaml.cs">
       <DependentUpon>ChangeDisTimeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChooseStationWindow.xaml.cs">
       <DependentUpon>ChooseStationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PO\AdjacentStation.cs" />
     <Compile Include="PO\Line.cs" />
     <Compile Include="PO\LineStation.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\SwitchObjects.cs" />
+    <Compile Include="StationInfoWindow.xaml.cs">
+      <DependentUpon>StationInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateLineWindow.xaml.cs">
       <DependentUpon>UpdateLineWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AddLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,6 +120,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StationInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateLineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

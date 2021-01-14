@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PlGui
 {
     /// <summary>
-    /// Interaction logic for DeleteLineWindow.xaml
+    /// Interaction logic for AddStationWindow.xaml
     /// </summary>
-    public partial class DeleteLineWindow : Window
+    public partial class AddStationWindow : Window
     {
-        public DeleteLineWindow()
+        public AddStationWindow()
         {
             InitializeComponent();
         }
@@ -30,14 +30,18 @@ namespace PlGui
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void b_delete_line_Click(object sender, RoutedEventArgs e)
+        private void b_save_Click(object sender, RoutedEventArgs e)
         {
+            PO.Station station = new PO.Station();
+            station.Code = int.Parse(tb_code.Text);
+            station.Lattitude = double.Parse(tb_lattitude.Text);
+            station.Longitude= double.Parse(tb_longitude.Text);
+            station.Name = tb_name.Text;
             try
             {
-               BO.Line l= MainWindow.bl.Get_Line(int.Parse(t_delete_line.Text));
-                MainWindow.bl.Delete_Line(l);
+                MainWindow.bl.AddStation(PO.SwitchObjects.StationPoToBo(station));
             }
-            catch(BO.Exceptions.Add_Existing_Item_Exception ex)
+            catch (BO.Exceptions.Add_Existing_Item_Exception ex )
             {
                 MessageBox.Show(ex.Message);
             }

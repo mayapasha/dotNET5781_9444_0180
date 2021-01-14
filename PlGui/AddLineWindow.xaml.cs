@@ -57,7 +57,15 @@ namespace PlGui
             b.FirstStation = s.Code;
             s = cb_last_station.SelectedItem as PO.Station;
             b.LastStation = s.Code;
-            MainWindow.bl.Add_Line(PO.SwitchObjects.LinePoToBo(b));
+            try
+            {
+                MainWindow.bl.Add_Line(PO.SwitchObjects.LinePoToBo(b));
+            }
+            catch (BO.Exceptions.Add_Existing_Item_Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             Close();
         }
     }

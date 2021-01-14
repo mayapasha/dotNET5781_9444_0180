@@ -42,6 +42,10 @@ namespace BLAPI
 
         #region station
         IEnumerable<BO.Station> Get_All_Stations();
+        BO.Station GetStation(int n);
+        void AddStation(BO.Station s);
+        void DeleteStation(BO.Station s);
+        void UpdateStation(BO.Station s);
         #endregion
         #region AdjacentSatations
         BO.AdjacentStations Get_AdjacentStation(int x, int y);

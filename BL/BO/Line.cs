@@ -14,5 +14,6 @@ namespace BO
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
         public IEnumerable<LineStation> List_Of_LineStation;
+       // public IEnumerable<BO.AdjacentStations> List_of_adjacentStation;
     }
 }
