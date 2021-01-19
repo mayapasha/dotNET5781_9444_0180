@@ -45,6 +45,10 @@ namespace PO
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
          public ObservableCollection<PO.LineStation> List_Of_Line_Stations { get; set; } = new ObservableCollection<PO.LineStation>();
+        public override string ToString()
+        {
+            return "line code: "+Code + " last station code: " + LastStation;
+        }
         //public ObservableCollection<BO.AdjacentStations> List_Of_AdjacentStation { get; } = new ObservableCollection<BO.AdjacentStations>();
     }
 }

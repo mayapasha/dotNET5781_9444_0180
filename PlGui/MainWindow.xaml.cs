@@ -21,7 +21,7 @@ namespace PlGui
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static IBL bl = BLFactory.GetBL("1");
+        public static IBL bl = BLFactory.GetBL();
 
         public MainWindow()
         {
@@ -38,6 +38,12 @@ namespace PlGui
         {
             StationInfoWindow stationInfoWindow = new StationInfoWindow();
             stationInfoWindow.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LineTripInfoWindow lineTripInfoWindow = new LineTripInfoWindow();
+            lineTripInfoWindow.Show();
         }
     }
 }

@@ -34,17 +34,24 @@ namespace PlGui
         {
             PO.Station station = new PO.Station();
             station.Code = int.Parse(tb_code.Text);
-            station.Lattitude = double.Parse(tb_lattitude.Text);
-            station.Longitude= double.Parse(tb_longitude.Text);
             station.Name = tb_name.Text;
             try
             {
+                station.Lattitude = double.Parse(tb_lattitude.Text);
+                station.Longitude = double.Parse(tb_longitude.Text);
                 MainWindow.bl.AddStation(PO.SwitchObjects.StationPoToBo(station));
+               
             }
             catch (BO.Exceptions.Add_Existing_Item_Exception ex )
             {
                 MessageBox.Show(ex.Message);
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("please enter to longitude and lattitude numbers");
+            }
+
+            StationInfoWindow.stations.Add(station);
             Close();
         }
     }

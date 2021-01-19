@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="LineInfoWindow" Height="450" Width="800" Background="#FFBDF7F5">
     <Window.Resources>
-        <DataTemplate x:Key="LineStationTemplate" DataType="PO.LineStation">
-            <Grid>
+        <DataTemplate x:Key="LineTemplate"  DataType="local:PO.LineStation">
+
+                <Grid>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -54,10 +55,11 @@
             <Label  HorizontalAlignment="Left" Height="28" Content="Line Number:" VerticalAlignment="Top" Width="156" Margin="32,19,0,0" FontFamily="Ink Free" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Background="#FFEE2B84" Grid.ColumnSpan="2"/>
             <Label Background="#FFEE2B84" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="122,19,0,0"  Content="Area:" VerticalAlignment="Top" Width="66" FontFamily="Ink Free" FontWeight="Bold" FontSize="18" Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
             <ComboBox x:Name="cbLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="40,10,104,0" VerticalAlignment="Stretch" Width="120" Background="#FFF1A0BB" BorderBrush="{x:Null}" Grid.ColumnSpan="2"   />
-            <TextBox x:Name="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="39,21,105,3" TextWrapping="Wrap" Text="{Binding Path=Area}" VerticalAlignment="Stretch" Width="120" FontFamily="Ink Free" Foreground="#FF9B3258" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="3"/>
+            <Label x:Name="l_Area"  Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="10,21,24,3"  Content="{Binding Path=Area}" VerticalAlignment="Stretch" FontFamily="Ink Free" Foreground="#FF9B3258" />
         </Grid>
-        <ListBox x:Name="lbLineStations" HorizontalAlignment="Left" Height="220" Margin="36,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="722"  ItemsSource="{Binding}" ItemTemplate="{StaticResource LineStationTemplate}" BorderBrush="{x:Null}" Foreground="#FFEE6F99" RenderTransformOrigin="0.5,0.5" Background="#FFF5CCE1" Grid.ColumnSpan="2" SelectionChanged="lbLineStations_SelectionChanged"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="23,311,0,0" TextWrapping="Wrap" Text="L&amp;M" VerticalAlignment="Top" Width="120" FontSize="36" FontFamily="Rockwell Extra Bold" Background="{x:Null}" Foreground="#FFEC357A" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1" Grid.Row="1"/>
+        
+        <ListBox x:Name="lbLineStations" HorizontalAlignment="Left" Height="220" Margin="36,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="722"  ItemsSource="{Binding}" ItemTemplate="{StaticResource LineTemplate}" BorderBrush="{x:Null}" Foreground="Black" RenderTransformOrigin="0.5,0.5" Background="#FFF5CCE1" Grid.ColumnSpan="2" />
+        <Label HorizontalAlignment="Left" Height="51" Margin="23,311,0,0"  Content="L&amp;M" VerticalAlignment="Top" Width="120" FontSize="36" FontFamily="Rockwell Extra Bold" Background="{x:Null}" Foreground="#FFEC357A"  BorderBrush="{x:Null}" Grid.Column="1" Grid.Row="1"/>
         <Button x:Name="b_add_line" Content="add line" HorizontalAlignment="Left" Margin="36,284,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="43" Click="b_add_line_Click"/>
         <Button x:Name="b_delete_line" Content="delete line" HorizontalAlignment="Left" Margin="217,284,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Height="43" Click="b_delete_line_Click"/>
         <Button x:Name="b_update_line" Content="update line" HorizontalAlignment="Left" Margin="430,284,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Height="43" Click="b_update_line_Click"/>

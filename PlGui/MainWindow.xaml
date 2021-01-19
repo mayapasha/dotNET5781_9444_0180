@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="b_line"  Content="lines information" HorizontalAlignment="Left" Margin="304,235,0,0" VerticalAlignment="Top" Width="229" Height="76" Click="b_line_Click"/>
-        <Button x:Name="b_station" Content="stations information" HorizontalAlignment="Left" Margin="33,235,0,0" VerticalAlignment="Top" Width="187" Height="76" Click="b_station_Click"/>
-
+        <Button x:Name="b_line"  Content="lines information" HorizontalAlignment="Left" Margin="455,294,0,0" VerticalAlignment="Top" Width="229" Height="76" Click="b_line_Click"/>
+        <Button x:Name="b_station" Content="stations information" HorizontalAlignment="Left" Margin="112,294,0,0" VerticalAlignment="Top" Width="222" Height="76" Click="b_station_Click"/>
+        <Button Content="lines time trip information" HorizontalAlignment="Left" Margin="258,181,0,0" VerticalAlignment="Top" Width="250" Height="68" FontSize="18" Click="Button_Click"/>
     </Grid>
 </Window>

@@ -65,7 +65,6 @@ namespace PlGui
             {
                 MessageBox.Show(ex.Message);
             }
-            
             Close();
         }
     }

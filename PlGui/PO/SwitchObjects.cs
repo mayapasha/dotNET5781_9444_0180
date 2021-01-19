@@ -74,5 +74,10 @@ namespace PO
             lineStationPO.Time = ls.Time;
             return lineStationPO;
         }
+      public static  IEnumerable<PO.Line> LineIEnumerableBoToPo(IEnumerable<BO.Line> linesBO)
+        {
+            return from item in linesBO
+                   select LineBoToPo(item);
+        }
     }
 }

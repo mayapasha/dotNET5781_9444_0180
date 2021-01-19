@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="AddStationWindow" Height="380" Width="450">
     <Grid>
-        <Label Content="Name: " HorizontalAlignment="Left" Margin="42,30,0,0" VerticalAlignment="Top" Height="42" Width="138" FontSize="20"/>
+        <Label Content="Name: " HorizontalAlignment="Left" Margin="42,30,0,0" VerticalAlignment="Top" Height="42" Width="138" FontSize="20" />
         <Label Content="Code: " HorizontalAlignment="Left" Margin="42,77,0,0" VerticalAlignment="Top" Height="37" Width="113" FontSize="20"/>
         <Label Content="Longitude: " HorizontalAlignment="Left" Margin="42,134,0,0" VerticalAlignment="Top" Height="41" Width="113" FontSize="20"/>
         <Label Content="Lattitude: " HorizontalAlignment="Left" Margin="42,204,0,0" VerticalAlignment="Top" Height="44" Width="113" FontSize="20"/>
         <TextBox x:Name="tb_name" HorizontalAlignment="Left" Height="48" Margin="246,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="tb_code" HorizontalAlignment="Left" Height="47" Margin="246,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="tb_code" HorizontalAlignment="Left" Height="47" Margin="246,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152" PreviewTextInput="NumberValidationTextBox"/>
         <TextBox x:Name="tb_longitude" HorizontalAlignment="Left" Height="49" Margin="246,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
         <TextBox x:Name="tb_lattitude" HorizontalAlignment="Left" Height="44" Margin="246,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
         <Button x:Name="b_save" Content="save" HorizontalAlignment="Left" Margin="323,288,0,0" VerticalAlignment="Top" Width="94" Height="36" FontSize="18" Click="b_save_Click"/>

@@ -10,7 +10,14 @@ namespace BL
     internal class BLImp : IBL
     {
         IDL dl = DLFactory.GetDL();
+
         //BO.AdjacentStations
+
+        public IEnumerable<BO.LineTrip> Find_All_LineTrip_Of_Line(int LId)
+        {
+            IEnumerable<BO.LineTrip> ltBO = Get_All_LineTrips().ToList().Where(item => item.LineId == LId).Select(item => item).ToList();
+            return ltBO;
+        }
         void IBL.AddStationToLine(BO.Station s, BO.Line l, BO.LineStation ls)
         {
             foreach (var item in l.List_Of_LineStation)
@@ -44,6 +51,13 @@ namespace BL
                 counter++;
             }
             dl.Add_LineStation(LineStationBoDoAdapter(lsnew));
+        }
+        public IEnumerable<BO.Line> FindAllLinesOfThisStation(BO.Station stationBO)
+        {
+            return from item in Get_All_Lines()
+                   from item1 in item.List_Of_LineStation
+                   where item1.Station == stationBO.Code
+                   select new BO.Line { Area = item.Area, Code = item.Code, LastStation = item.LastStation, FirstStation = item.FirstStation, Id = item.Id, List_Of_LineStation = item.List_Of_LineStation };
         }
         #region user
         /// <summary>
@@ -268,19 +282,30 @@ namespace BL
             return LineDoBoAdapter(lineDO);
         }
 
-        public IEnumerable<Line> Get_All_Lines()
+        public IEnumerable<BO.Line> Get_All_Lines()
         {
 
-            IEnumerable<Line> l = from item in dl.Get_All_Lines()
-                                  select LineDoBoAdapter(item);
-            foreach (var item in l)
+            try
             {
-                item.List_Of_LineStation = from item1 in Get_All_LineStations()
+                IEnumerable<DO.Line> l = dl.Get_All_Lines().ToList();
+                IEnumerable<BO.Line> lb = l.Select(item => new BO.Line { Area = (BO.Enums.Areas)item.Area, Code = item.Code, Id = item.Id, FirstStation = item.LastStation, LastStation = item.LastStation }).ToList();
+                foreach (var item1 in lb)
+                {
+
+                    IEnumerable<BO.LineStation> LBitem = Get_All_LineStations().ToList().Where(item => item.LineId == item1.Id).Select(item => new BO.LineStation { LineId = item.LineId, Station = item.Station, LineStationIndex = item.LineStationIndex, PrevStation = item.PrevStation, NextStation = item.NextStation }).ToList();
+                    item1.List_Of_LineStation = LBitem;
+                    /*from item1 in Get_All_LineStations();
+
                                            where item1.LineId == item.Id
-                                           select item1;
-   
+                                           select new BO.LineStation { Distance = item1.Distance, LineId = item1.LineId, LineStationIndex = item1.LineStationIndex, NextStation = item1.NextStation, PrevStation = item1.PrevStation, Station = item1.Station, Time = item1.Time };*/
+                }
+                return lb;
             }
-            return l;
+            catch (BO.Exceptions.Item_not_found_Exception ex)
+            {
+                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+            }
+
         }
 
         public void Add_Line(BO.Line line)
@@ -368,10 +393,10 @@ namespace BL
             return lineStationDO;
         }
         public LineStation Get_LineStation(int lineStationIndex)
-        {          
+        {
             try
             {
-                BO.LineStation b=LineStationDoBoAdapter(dl.Get_LineStation(lineStationIndex));
+                BO.LineStation b = LineStationDoBoAdapter(dl.Get_LineStation(lineStationIndex));
                 BO.AdjacentStations a = Get_AdjacentStation(b.Station, b.NextStation);
                 b.Distance = a.Distance;
                 b.Time = a.Time;
@@ -380,22 +405,36 @@ namespace BL
             catch (DO.Item_not_found_Exception ex)
             {
                 throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }    
+            }
         }
 
         public IEnumerable<LineStation> Get_All_LineStations()
         {
-            IEnumerable<BO.LineStation> ls = from item in dl.Get_All_LineStations()
-                                             select LineStationDoBoAdapter(item);
+            IEnumerable<DO.LineStation> l = dl.Get_All_LineStations().ToList();
+            IEnumerable<BO.LineStation> ls = l.Select(item => new BO.LineStation { LineId = item.LineId, Station = item.Station, LineStationIndex = item.LineStationIndex, PrevStation = item.PrevStation, NextStation = item.NextStation }).ToList();
+            // IEnumerable<BO.LineStation> ls = from item in dl.Get_All_LineStations()
+            // select new BO.LineStation { LineId=item.LineId, Station=item.Station, LineStationIndex=item.LineStationIndex, PrevStation=item.PrevStation, NextStation=item.NextStation };
             foreach (var item in ls)
             {
                 try
                 {
-                    BO.AdjacentStations a= Get_AdjacentStation(item.Station, item.NextStation);
-                    item.Distance = a.Distance;
-                    item.Time = a.Time;
+                    if (item.NextStation != -1)
+                    {
+                        BO.AdjacentStations a = Get_AdjacentStation(item.Station, item.NextStation);
+                        item.Distance = a.Distance;
+                        item.Time = a.Time;
+                    }
+                    else
+                    {
+                        item.Distance = 0;
+                        item.Time = new TimeSpan(0, 0, 0);
+                    }
                 }
-                catch(DO.Item_not_found_Exception ex)
+                catch (DO.Item_not_found_Exception ex)
+                {
+                    throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+                }
+                catch (BO.Exceptions.Item_not_found_Exception ex)
                 {
                     throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
                 }
@@ -450,18 +489,10 @@ namespace BL
         BO.Station StationDoBoAdapter(DO.Station StationDO)
         {
             BO.Station StationBO = new BO.Station();
-
-            int StationIndex = StationDO.Code;
-            try
-            {
-                StationDO = dl.Get_Station(StationDO.Code);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-            StationDO.CopyPropertiesTo(StationBO);
-
+            StationBO.Name = StationDO.Name;
+            StationBO.Longitude = StationDO.Longitude;
+            StationBO.Lattitude = StationDO.Lattitude;
+            StationBO.Code = StationDO.Code;
             return StationBO;
         }
         DO.Station StationBoDoAdapter(BO.Station StationBO)
@@ -480,10 +511,14 @@ namespace BL
                    select StationDoBoAdapter(item);
         }
 
-        IEnumerable<Station> IBL.Get_All_Stations()
+        IEnumerable<BO.Station> IBL.Get_All_Stations()
         {
-            return from item in dl.Get_All_Stations()
-                   select StationDoBoAdapter(item);
+            var a = dl.Get_All_Stations();
+            return from item in a
+                   select new BO.Station { Code = item.Code, Name = item.Name, Lattitude = item.Lattitude, Longitude = item.Longitude };
+
+            //return stationsBO;
+
         }
         public Station GetStation(int n)
         {
@@ -491,11 +526,11 @@ namespace BL
             {
                 return StationDoBoAdapter(dl.Get_Station(n));
             }
-            catch(DO.Item_not_found_Exception ex)
+            catch (DO.Item_not_found_Exception ex)
             {
                 throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
             }
-            
+
         }
         public void AddStation(Station s)
         {
@@ -538,14 +573,15 @@ namespace BL
             b.Time = a.Time;
             return b;
         }
-        
+
         public AdjacentStations Get_AdjacentStation(int x, int y)
         {
             try
             {
-                return(AdjacentStationDoToBo( dl.GetAdjacentStations(x, y)));
+                DO.AdjacentStations adjacentDP = dl.GetAdjacentStations(x, y);
+                return new BO.AdjacentStations { Distance = adjacentDP.Distance, Station1 = adjacentDP.Station1, Station2 = adjacentDP.Station2, Time = adjacentDP.Time };
             }
-            catch(DO.Item_not_found_Exception ex)
+            catch (DO.Item_not_found_Exception ex)
             {
                 throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
             }
@@ -554,7 +590,7 @@ namespace BL
         {
             try
             {
-                dl.AddAdjacentStation(AdjacentStationBoToDo(s));   
+                dl.AddAdjacentStation(AdjacentStationBoToDo(s));
             }
             catch (DO.Add_Existing_Item_Exception ex)
             {
@@ -586,9 +622,27 @@ namespace BL
             }
         }
 
-        
+
+
 
 
         #endregion
+        #region line trip 
+        public IEnumerable<LineTrip> Get_All_LineTrips()
+        {
+
+            try
+            {
+                IEnumerable<BO.LineTrip> linetripBO = dl.Get_All_LineTrip().ToList().Select(item => new BO.LineTrip { Id = item.Id, LineId = item.LineId, StartAt = item.StartAt }).ToList();
+                return linetripBO;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        #endregion
     }
-}
+
+};

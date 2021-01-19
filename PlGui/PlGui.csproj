@@ -64,9 +64,16 @@
     <Compile Include="ChooseStationWindow.xaml.cs">
       <DependentUpon>ChooseStationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LineTripInfoWindow.xaml.cs">
+      <DependentUpon>LineTripInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoreStationInfoWindow.xaml.cs">
+      <DependentUpon>MoreStationInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PO\AdjacentStation.cs" />
     <Compile Include="PO\Line.cs" />
     <Compile Include="PO\LineStation.cs" />
+    <Compile Include="PO\LineTrip.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\SwitchObjects.cs" />
     <Compile Include="StationInfoWindow.xaml.cs">
@@ -99,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="LineTripInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +131,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MoreStationInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StationInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

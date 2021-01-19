@@ -9,15 +9,9 @@ namespace BLAPI
 {
     public static class BLFactory
     {
-        public static IBL GetBL(string type)
+        public static IBL GetBL()
         {
-            switch (type)
-            {
-                case "1":
-                    return new BLImp();
-                default:
-                    return new BLImp();
-            }
+            return new BLImp();
         }
     }
 }

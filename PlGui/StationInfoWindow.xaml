@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="StationInfoWindow" Height="450" Width="800">
     <Grid>
-        <ListBox HorizontalAlignment="Left" Height="210" Margin="37,103,0,0" VerticalAlignment="Top" Width="705"/>
+        <ListBox x:Name="lb_stations" HorizontalAlignment="Left" Height="233" Margin="37,82,0,0" VerticalAlignment="Top" Width="705" MouseDoubleClick="lb_stations_MouseDoubleClick" ItemsSource="{Binding}"/>
         <Button x:Name="b_add_station" Content="add station" HorizontalAlignment="Left" Margin="37,343,0,0" VerticalAlignment="Top" Width="128" Height="44" Click="b_add_station_Click"/>
+        <Label Content="double click on a station to see more information" HorizontalAlignment="Left" Margin="37,27,0,0" VerticalAlignment="Top" Width="567" Height="50" FontSize="25"/>
 
     </Grid>
 </Window>

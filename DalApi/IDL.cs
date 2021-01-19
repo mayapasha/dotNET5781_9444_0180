@@ -54,5 +54,12 @@ namespace DalApi
         IEnumerable<DO.AdjacentStations> GetAllAdjacentStations();
 
         #endregion
+        #region line trip
+        DO.LineTrip GetLineTrip(int lineId, int i);
+        void DeleteLineTrip(DO.LineTrip lineTrip);
+        void UpdateLineTrip(DO.LineTrip lineTrip);
+        void AddLineTrip(DO.LineTrip lineTrip);
+        IEnumerable<DO.LineTrip> Get_All_LineTrip();
+        #endregion
     }
 }

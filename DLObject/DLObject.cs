@@ -287,13 +287,20 @@ namespace DL
         #region AdjacentStations
         public DO.AdjacentStations GetAdjacentStations(int x, int y)
         {
-            for (int i = 0; i < DataSource.ListAdjacentStations.Count; i++)
+            foreach (var item in DataSource.ListAdjacentStations)
+            {
+                if(item.Station1==x&& item.Station2==y&& item.Is_Active==true)
+                {
+                    return item;
+                }
+            }
+          /*  for (int i = 0; i < DataSource.ListAdjacentStations.Count; i++)
             {
                 if (DataSource.ListAdjacentStations[i].Station1 == x && DataSource.ListAdjacentStations[i].Station2 == y && DataSource.ListAdjacentStations[i].Is_Active==true)
                 {
                     return DataSource.ListAdjacentStations[i];
                 }
-            }
+            }*/
             throw new Item_not_found_Exception("the Adjacent between the Stations " + x + ", " + y + "is not found");
         }
 
@@ -341,7 +348,77 @@ namespace DL
             return from adjacentStations in DataSource.ListAdjacentStations
                    select adjacentStations.Clone();
         }
+
+
         #endregion
+
+        #region line trip
+        public LineTrip GetLineTrip(int lineId, int i)
+        {
+            foreach (var item in DataSource.listLineTrip)
+            {
+                if(item.LineId==lineId && item.Id==i && item.Is_Active==true)
+                {
+                    return item.Clone();
+                }
+            }
+            throw new DO.Item_not_found_Exception("the line trip that you want to find is not exist");
+        }
+
+        public void DeleteLineTrip(LineTrip lineTrip)
+        {
+            foreach (var item in DataSource.listLineTrip)
+            {
+                if (item.LineId == lineTrip.LineId && item.Id == lineTrip.Id && item.Is_Active == true)
+                {
+                    item.Is_Active = false;
+                    return;
+                }
+            }
+            throw new DO.Item_not_found_Exception("this line trip can not be deleted because it is not exists");
+        }
+
+        public void UpdateLineTrip(LineTrip lineTrip)
+        {
+            DO.LineTrip other = DataSource.listLineTrip.Find(l =>l.Id==lineTrip.Id && l.LineId==lineTrip.LineId);
+            if (other != null && other.Is_Active == true)
+            {
+                DataSource.listLineTrip.Remove(other);//????
+                DataSource.listLineTrip.Add(other.Clone());//?????
+            }
+            else
+            {
+                throw new Item_not_found_Exception("the line trip of "+lineTrip.LineId+" has not found");
+            }
+        }
+
+        public void AddLineTrip(LineTrip lineTrip)
+        {
+            foreach (var item in DataSource.listLineTrip)
+            {
+                if (item.Id == lineTrip.Id && item.LineId == lineTrip.LineId)
+                {
+                    if (item.Is_Active == true)
+                    {
+                        throw new Add_Existing_Item_Exception("this line trip is allready exists");
+                    }
+                    if(item.Is_Active ==false)
+                    {
+                        item.Is_Active = true;
+                        UpdateLineTrip(lineTrip);
+                    }
+                }
+            }
+            throw new Add_Existing_Item_Exception("this line trip is allready exists");
+        }
+
+        public IEnumerable<LineTrip> Get_All_LineTrip()
+        {
+            IEnumerable<DO.LineTrip> ltDO = DataSource.listLineTrip.ToList().Select(item => item.Clone());
+            return ltDO;
+         }
+        #endregion
+
     }
 }
 
