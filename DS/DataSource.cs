@@ -25,7 +25,7 @@ namespace DS
             
             InitAllLists();
             
-            DO.RunNumbers.Run_Number_Line_Station = 0;
+            DO.RunNumbers.Run_Number_Line_Id=0;
         }
         public static void InitAllLists()
         {
@@ -34,7 +34,7 @@ namespace DS
             #region listStations
             ListStations = new List<Station>();
 
-            for (int i = 1; i < 51; i++)
+            for (int i = 0; i < 50; i++)
             {
                 Station s = new Station
                 {

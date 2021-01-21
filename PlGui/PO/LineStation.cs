@@ -26,7 +26,9 @@ namespace PO
         static readonly DependencyProperty NextStationProperty = DependencyProperty.Register("NextStation", typeof(int), typeof(LineStation));
         public int NextStation { get => (int)GetValue(NextStationProperty); set => SetValue(NextStationProperty, value); }
 
+        static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(string), typeof(LineStation));
+        public string Name { get => (string)GetValue(NameProperty); set => SetValue(NameProperty, value); }
 
-        
+
     }
 }

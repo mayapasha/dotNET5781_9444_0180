@@ -12,12 +12,19 @@ namespace BL
         IDL dl = DLFactory.GetDL();
 
         //BO.AdjacentStations
-
+        public string Find_LineStation_Name(int SCode)
+        {
+            BO.Station s = new Station();
+               s= Get_All_Stations().ToList().Find(item => item.Code == SCode);
+            return s.Name;
+            
+        }
         public IEnumerable<BO.LineTrip> Find_All_LineTrip_Of_Line(int LId)
         {
             IEnumerable<BO.LineTrip> ltBO = Get_All_LineTrips().ToList().Where(item => item.LineId == LId).Select(item => item).ToList();
             return ltBO;
         }
+        
         void IBL.AddStationToLine(BO.Station s, BO.Line l, BO.LineStation ls)
         {
             foreach (var item in l.List_Of_LineStation)
@@ -34,6 +41,7 @@ namespace BL
             lsnew.Station = s.Code;
             lsnew.PrevStation = ls.Station;
             lsnew.LineStationIndex = ind + 1;
+            dl.Update_LineStation(new DO.LineStation { Is_Active = true, LineId = ls.LineId, LineStationIndex = ls.LineStationIndex, NextStation = ls.NextStation, PrevStation = ls.PrevStation, Station = ls.Station });
             int counter = 0;
             foreach (var item in l.List_Of_LineStation)
             {
@@ -42,15 +50,19 @@ namespace BL
                     lsnew.NextStation = item.Station;
                     item.LineStationIndex = ind + 2;
                     item.PrevStation = lsnew.Station;
-
+                    dl.Update_LineStation(new DO.LineStation { Is_Active = true, LineId = item.LineId, LineStationIndex = item.LineStationIndex, NextStation = item.NextStation, PrevStation = item.PrevStation, Station = item.Station });
                 }
-                else if (counter > ind + 2)
+                else if (counter >= ind + 2)
                 {
                     item.LineStationIndex += 1;
+                    dl.Update_LineStation(new DO.LineStation { Is_Active = true, LineId = item.LineId, LineStationIndex = item.LineStationIndex, NextStation = item.NextStation, PrevStation = item.PrevStation, Station = item.Station });
                 }
                 counter++;
+               
             }
+
             dl.Add_LineStation(LineStationBoDoAdapter(lsnew));
+
         }
         public IEnumerable<BO.Line> FindAllLinesOfThisStation(BO.Station stationBO)
         {
@@ -312,7 +324,13 @@ namespace BL
         {
             try
             {
-                DO.Line lineDO = LineBoDoAdapter(line);
+                BO.LineStation lSFirst = new BO.LineStation { LineStationIndex = 0, Distance = 0, LineId = line.Code, PrevStation = -1, Station = line.FirstStation, NextStation = line.LastStation, Time = new TimeSpan(0, 0, 0) };
+                lSFirst.Name = Find_LineStation_Name(lSFirst.Station);
+                Add_LineStaton(lSFirst);
+                BO.LineStation lSLast = new BO.LineStation { LineStationIndex = 1, Distance = 0, LineId = line.Code, PrevStation = line.FirstStation, Station = line.LastStation, NextStation = -1, Time = new TimeSpan(0, 0, 0) };
+                lSLast.Name = Find_LineStation_Name(lSLast.Station);
+                Add_LineStaton(lSLast);
+                DO.Line lineDO = new DO.Line { Area= (DO.Enums.Areas)line.Area, LastStation=line.LastStation, Code=line.Code, FirstStation=line.FirstStation, Id=line.Id, Is_Active=true };
                 dl.Add_Line(lineDO);
             }
             catch (DO.Add_Existing_Item_Exception ex)
@@ -400,6 +418,7 @@ namespace BL
                 BO.AdjacentStations a = Get_AdjacentStation(b.Station, b.NextStation);
                 b.Distance = a.Distance;
                 b.Time = a.Time;
+                b.Name = Find_LineStation_Name(b.Station);
                 return b;
             }
             catch (DO.Item_not_found_Exception ex)
@@ -423,11 +442,13 @@ namespace BL
                         BO.AdjacentStations a = Get_AdjacentStation(item.Station, item.NextStation);
                         item.Distance = a.Distance;
                         item.Time = a.Time;
+                        item.Name = Find_LineStation_Name(item.Station);
                     }
                     else
                     {
                         item.Distance = 0;
                         item.Time = new TimeSpan(0, 0, 0);
+                        item.Name = Find_LineStation_Name(item.Station);
                     }
                 }
                 catch (DO.Item_not_found_Exception ex)
@@ -446,7 +467,7 @@ namespace BL
         {
             try
             {
-                DO.LineStation lineStationDO = LineStationBoDoAdapter(lineStation);
+                DO.LineStation lineStationDO = new DO.LineStation { Is_Active = true, LineId=lineStation.LineId, LineStationIndex=lineStation.LineStationIndex, NextStation=lineStation.NextStation, PrevStation=lineStation.PrevStation, Station=lineStation.Station };
                 dl.Add_LineStation(lineStationDO);
             }
             catch (DO.Add_Existing_Item_Exception ex)
@@ -473,6 +494,9 @@ namespace BL
             try
             {
                 DO.LineStation lineStationDO = LineStationBoDoAdapter(lineStation);
+                BO.AdjacentStations adjacentBO = Get_AdjacentStation(lineStation.Station, lineStation.NextStation);
+                DO.AdjacentStations adjacentDO = new DO.AdjacentStations { Time = adjacentBO.Time, Distance = adjacentBO.Distance, Is_Active = true, Station1 = adjacentBO.Station1, Station2 = adjacentBO.Station2 };
+                dl.UpdateAdjecentStation(adjacentDO);
                 dl.Update_LineStation(lineStationDO);
             }
             catch (DO.Item_not_found_Exception ex)
@@ -642,6 +666,8 @@ namespace BL
             }
 
         }
+
+       
         #endregion
     }
 

@@ -64,6 +64,9 @@
     <Compile Include="ChooseStationWindow.xaml.cs">
       <DependentUpon>ChooseStationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DisTimeWindow.xaml.cs">
+      <DependentUpon>DisTimeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LineTripInfoWindow.xaml.cs">
       <DependentUpon>LineTripInfoWindow.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisTimeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

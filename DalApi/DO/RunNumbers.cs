@@ -8,14 +8,14 @@ namespace DO
 {
     static public class RunNumbers
     {
-        public static int Run_Number_Line_Station { get; set; } 
+        public static int Run_Number_Line_Id { get; set; } 
     }
 
     static public class RnumNumbersInitialization
     {
         public static void Init()
         {
-            DO.RunNumbers.Run_Number_Line_Station = 0;
+            DO.RunNumbers.Run_Number_Line_Id = 0;
         }
        
     }

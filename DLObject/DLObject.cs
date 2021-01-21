@@ -147,7 +147,7 @@ namespace DL
                      select line.Clone();
         }
         public void Delete_Line(Line line)
-        {
+        { 
             if (DataSource.ListLines.FindIndex(l => l.Id == line.Id) != -1 && DataSource.ListLines[DataSource.ListLines.FindIndex(l => l.Id == line.Id)].Is_Active == true)
             {
                 DataSource.ListLines[DataSource.ListLines.FindIndex(l => l.Id == line.Id)].Is_Active = false;
@@ -159,15 +159,20 @@ namespace DL
         }
         public void Add_Line(Line line)
         {
-            if (DataSource.ListLines.FindIndex(l => l.Id == line.Id) != -1 && DataSource.ListLines[DataSource.ListLines.FindIndex(l => l.Id == line.Id)].Is_Active == true)
+            line.Id = RunNumbers.Run_Number_Line_Id;
+            RunNumbers.Run_Number_Line_Id++;
+            while (DataSource.ListLines.FindIndex(l => l.Id == line.Id) != -1 && DataSource.ListLines[DataSource.ListLines.FindIndex(l => l.Id == line.Id)].Is_Active == true)
             {
-                throw new Add_Existing_Item_Exception("the line " + line.Id + " is alrady exist");
+                line.Id = RunNumbers.Run_Number_Line_Id;
+                RunNumbers.Run_Number_Line_Id++;
             }
-            else
+            if(DataSource.ListLines.FindIndex(l => l.Code == line.Code) != -1 && DataSource.ListLines[DataSource.ListLines.FindIndex(l => l.Code == line.Code)].Is_Active == true)
             {
-                line.Is_Active = true;
-                DataSource.ListLines.Add(line.Clone());
+                throw new Add_Existing_Item_Exception("the line " + line.Code + " is alrady exist");
             }
+            line.Is_Active = true;
+            DataSource.ListLines.Add(line.Clone());
+
         }
         #endregion
         #region station
@@ -226,15 +231,17 @@ namespace DL
         }
         #endregion
         #region linestation
+
         public void Update_LineStation(LineStation lineStation)
         {
-            DO.LineStation other = DataSource.ListLineStations.Find(l => l.LineStationIndex == lineStation.LineStationIndex);
+            DO.LineStation other = DataSource.ListLineStations.Find(l => l.Station == lineStation.Station && l.LineId==lineStation.LineId);
             if (other != null && other.Is_Active == true)
             {
-                DataSource.ListLineStations.Remove(other);//????
-                DataSource.ListLineStations.Add(other.Clone());//?????
+                DataSource.ListLineStations.Remove(other);
+                DataSource.ListLineStations.Insert(other.LineStationIndex,other.Clone());
+
             }
-            else
+            else 
             {
                 throw new Item_not_found_Exception("the line station " + lineStation.LineStationIndex + " was not found");
             }
@@ -269,16 +276,15 @@ namespace DL
         }
         public void Add_LineStation(LineStation lineStation)
         {
-            if (DataSource.ListLineStations.FindIndex(l => l.LineStationIndex == lineStation.LineStationIndex) != -1 && DataSource.ListLineStations[DataSource.ListLineStations.FindIndex(l => l.LineStationIndex == lineStation.LineStationIndex)].Is_Active == true)
+            if (DataSource.ListLineStations.FindIndex(l => l.LineId== lineStation.LineId && l.Station==lineStation.Station) != -1 && DataSource.ListLineStations[DataSource.ListLineStations.FindIndex(l => l.LineId == lineStation.LineId && l.Station == lineStation.Station)].Is_Active == true)
             {
                 throw new Add_Existing_Item_Exception("the line station " + lineStation.LineStationIndex + " is alrady exist");
             }
             else
             {
                 var doLineStation = lineStation.Clone();
-                doLineStation.LineStationIndex = ++RunNumbers.Run_Number_Line_Station;
                 doLineStation.Is_Active = true;
-                DataSource.ListLineStations.Add(doLineStation);
+                DataSource.ListLineStations.Insert(doLineStation.LineStationIndex, doLineStation);
             }
         }
 

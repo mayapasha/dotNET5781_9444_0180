@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
-        Title="DeleteLineWindow" Height="319.643" Width="708.929">
+        Title="DeleteLineWindow" Height="160" Width="310">
     <Grid>
-        <Label  Content="Enter line to delete" HorizontalAlignment="Left" Margin="64,82,0,0" VerticalAlignment="Top" Height="48" Width="197"/>
-        <TextBox x:Name="t_delete_line" HorizontalAlignment="Left" Height="48" Margin="349,82,0,0" PreviewTextInput="NumberValidationTextBox" TextWrapping="Wrap"  VerticalAlignment="Top" Width="307"/>
-        <Button x:Name="b_delete_line" Content="delete" HorizontalAlignment="Left" Margin="581,242,0,0" VerticalAlignment="Top" Width="75" Click="b_delete_line_Click"/>
+        <Label  Content="Enter line to delete" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="31" Width="119"/>
+        <Button x:Name="b_delete_line" Content="delete" HorizontalAlignment="Left" Margin="208,87,0,0" VerticalAlignment="Top" Width="75" Click="b_delete_line_Click"/>
+        <ComboBox x:Name="cb_lineDelete" HorizontalAlignment="Left" Margin="134,21,0,0" VerticalAlignment="Top" Width="149" Height="31"/>
 
     </Grid>
 </Window>
