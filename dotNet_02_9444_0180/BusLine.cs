@@ -42,7 +42,7 @@ namespace dotNet_02_9444_0180
             {
                 s += '\n' + item.ToString();
             }
-            return "BusLinNumber: " + BusLineNumber + '\n'+" Area: " + Area + '\n' + " Stations: " + '\n' + s + '\n';
+            return  "BusLineNumber: " + BusLineNumber + '\n'+" Area: " + Area + '\n' + " Stations: " + '\n' + s + '\n';
         }
         public void AddStation(BusLineStation other)//the func gets station and adding it to the stations's list
         {

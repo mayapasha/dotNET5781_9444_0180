@@ -1,0 +1,15 @@
+﻿<Window x:Class="PlGui.LineTripInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlGui"
+        mc:Ignorable="d"
+        Title="LineTripInfoWindow" Height="450" Width="600" >
+    <Grid>
+        <ComboBox x:Name="cb_lines" SelectionChanged="cb_lines_SelectionChanged" HorizontalAlignment="Left" Margin="145,30,0,0" VerticalAlignment="Top" Width="423" Height="39"/>
+        <Label Content="choose line: " HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="39" Width="111" FontSize="18"/>
+        <ListBox x:Name="lb_lineTrip" HorizontalAlignment="Left" ItemsSource="{Binding}" Height="273" Margin="23,108,0,0" VerticalAlignment="Top" Width="545"/>
+
+    </Grid>
+</Window>

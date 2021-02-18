@@ -1,0 +1,61 @@
+﻿<Window x:Class="dotnet_03b_9444_0180.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotnet_03b_9444_0180"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="BusTemplate" DataType="local: Buss">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="license number: "/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=LicenseNum}"/>
+                <TextBlock Grid.Column="2" Text="Status "/>
+                <TextBlock Grid.Column="3" Text="{Binding Path=state}"/>
+                <Button x:Name="BusForDrive" Content="Drive" Margin="10,2,10,10" Click="drive_click" Grid.Column="4" IsEnabled="{Binding Path=On_work}" Background="White" BorderBrush="{x:Null}" Foreground="#FF4B1266"/>
+                <Button x:Name="refeul" Content="Refeul" Margin="10,2,10,10" Click="refeul_click" Grid.Column="5" IsEnabled="{Binding Path=On_work}" Background="White" BorderBrush="{x:Null}" Foreground="#FF4B1266"/>
+                <TextBlock x:Name="TBtime" Grid.Column="6" Text="{Binding Path=WatchTime}"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Sketch00102.png" TileMode="Tile"/>
+    </Window.Background>
+    <Grid>
+        <Button Content="Add bus" HorizontalAlignment="Left" Margin="640,10,0,0" VerticalAlignment="Top" Width="129" Height="77" Click="Button_Click" Background="#FFF7F7C4" BorderBrush="{x:Null}" Foreground="#FF461857">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <StackPanel>
+            <ListBox x:Name="LbBuses" ItemsSource="{Binding}" ItemTemplate="{StaticResource BusTemplate}" HorizontalAlignment="Left" Height="340" Margin="10,0,0,0" VerticalAlignment="Top" Width="605" Grid.ColumnSpan="2" PreviewMouseDoubleClick="LbBuses_MouseDoubleClick" Foreground="#FF461857" BorderBrush="#FF351161">
+                <ListBox.Background>
+                    <SolidColorBrush Color="#FFCAFAFF"/>
+                </ListBox.Background>
+            </ListBox>
+        </StackPanel>
+        <!--<TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="653,0,0,226" VerticalAlignment="Bottom" Width="129" Height="77" />-->
+    </Grid>
+
+</Window>
+
+
+

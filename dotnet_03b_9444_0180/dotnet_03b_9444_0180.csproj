@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2178BEE-7FCA-41D6-BB12-5B7CEE6889A7}</ProjectGuid>
+    <ProjectGuid>{8A14259D-D99D-46B4-8B1E-879019BE4015}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>dotNET_03A_9444_0180</RootNamespace>
-    <AssemblyName>dotNET_03A_9444_0180</AssemblyName>
+    <RootNamespace>dotnet_03b_9444_0180</RootNamespace>
+    <AssemblyName>dotnet_03b_9444_0180</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,13 +55,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddBusWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BusInformationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DriveWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddBusWindow.xaml.cs">
+      <DependentUpon>AddBusWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BusInfo.cs" />
+    <Compile Include="BusInformationWindow.xaml.cs">
+      <DependentUpon>BusInformationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Buss.cs" />
+    <Compile Include="BussList.cs" />
+    <Compile Include="DriveWindow.xaml.cs">
+      <DependentUpon>DriveWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -69,6 +93,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="observableCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,16 +120,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dotNet_02_9444_0180\dotNet_02_9444_0180.csproj">
-      <Project>{1d381bbd-725f-4520-ab0e-990ab4a588d2}</Project>
-      <Name>dotNet_02_9444_0180</Name>
+    <ProjectReference Include="..\dotNET5781_9444_0180\dotNet_01_9444_0180\dotNet_01_9444_0180.csproj">
+      <Project>{48574c30-a753-4b16-a1cd-faef6f78aebd}</Project>
+      <Name>dotNet_01_9444_0180</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Hab4f2e890edd43dda8e5e2d216c81ba1G %282%29.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sketch00104.png" />
+    <Resource Include="Sketch00102.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

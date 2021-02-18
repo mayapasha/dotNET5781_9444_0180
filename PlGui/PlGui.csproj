@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2178BEE-7FCA-41D6-BB12-5B7CEE6889A7}</ProjectGuid>
+    <ProjectGuid>{ACD13D1C-DC5A-49FF-BFC2-C7C37103C118}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>dotNET_03A_9444_0180</RootNamespace>
-    <AssemblyName>dotNET_03A_9444_0180</AssemblyName>
+    <RootNamespace>PlGui</RootNamespace>
+    <AssemblyName>PlGui</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -55,18 +55,101 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddStationWindow.xaml.cs">
+      <DependentUpon>AddStationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeDisTimeWindow.xaml.cs">
+      <DependentUpon>ChangeDisTimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseStationWindow.xaml.cs">
+      <DependentUpon>ChooseStationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisTimeWindow.xaml.cs">
+      <DependentUpon>DisTimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LineTripInfoWindow.xaml.cs">
+      <DependentUpon>LineTripInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoreStationInfoWindow.xaml.cs">
+      <DependentUpon>MoreStationInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PO\AdjacentStation.cs" />
+    <Compile Include="PO\Line.cs" />
+    <Compile Include="PO\LineStation.cs" />
+    <Compile Include="PO\LineTrip.cs" />
+    <Compile Include="PO\Station.cs" />
+    <Compile Include="PO\SwitchObjects.cs" />
+    <Compile Include="StationInfoWindow.xaml.cs">
+      <DependentUpon>StationInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateLineWindow.xaml.cs">
+      <DependentUpon>UpdateLineWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeDisTimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseStationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisTimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineTripInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddLineWindow.xaml.cs">
+      <DependentUpon>AddLineWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DeleteLineWindow.xaml.cs">
+      <DependentUpon>DeleteLineWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LineInfoWindow.xaml.cs">
+      <DependentUpon>LineInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MoreStationInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StationInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -95,16 +178,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dotNet_02_9444_0180\dotNet_02_9444_0180.csproj">
-      <Project>{1d381bbd-725f-4520-ab0e-990ab4a588d2}</Project>
-      <Name>dotNet_02_9444_0180</Name>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{4a36138d-23dd-4416-9074-67ea57bcaef4}</Project>
+      <Name>BL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Hab4f2e890edd43dda8e5e2d216c81ba1G %282%29.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Sketch00104.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

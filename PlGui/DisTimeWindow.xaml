@@ -1,0 +1,17 @@
+﻿<Window x:Class="PlGui.DisTimeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlGui"
+        mc:Ignorable="d"
+        Title="DisTimeWindow" Height="280" Width="500">
+    <Grid>
+        <Label Content="distance:" HorizontalAlignment="Left" Margin="34,36,0,0" VerticalAlignment="Top" Width="106" FontSize="18"/>
+        <Label Content="time:" HorizontalAlignment="Left" Margin="34,104,0,0" VerticalAlignment="Top" Width="106" FontSize="18"/>
+        <TextBox x:Name="tb_dis"  HorizontalAlignment="Left" Height="34" Margin="192,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198"/>
+        <TextBox x:Name="tb_time" HorizontalAlignment="Left" Height="34" Margin="192,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198"/>
+        <Button Content="save" HorizontalAlignment="Left" Margin="356,169,0,0" VerticalAlignment="Top" Width="87" Height="30" FontSize="18" Click="Button_Click"/>
+
+    </Grid>
+</Window>
