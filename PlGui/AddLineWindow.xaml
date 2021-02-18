@@ -5,18 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
-        Title="AddLineWindow" Height="350" Width="620">
- 
+        Title="AddLineWindow" Height="350" Width="620" Background="#FFBDF7F5">
+
     <Grid>
         <Label  Content="enter line code:" HorizontalAlignment="Left" Margin="96,37,0,0" VerticalAlignment="Top" Width="136"/>
-        <Label Content="enter the line area:" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Height="24" Width="105"/>
-        <Label Content="choose the first station:" HorizontalAlignment="Left" Margin="96,139,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
-
+        <Label Content="enter the line area:" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Height="47" Width="163"/>
+        <Label Content="choose the first station:" HorizontalAlignment="Left" Margin="96,139,0,0" VerticalAlignment="Top" Height="28" Width="209" />
         <TextBox x:Name="t_line_code" HorizontalAlignment="Left" Height="23" Margin="408,37,0,0" PreviewTextInput="NumberValidationTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="b_save_line" Content="save" HorizontalAlignment="Left" Margin="492,269,0,0" VerticalAlignment="Top" Width="95" Click="b_save_line_Click" Height="29"/>
         <ComboBox x:Name="cb_line_area" HorizontalAlignment="Left" Margin="408,87,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox Name="cb_first_station" HorizontalAlignment="Left" Margin="408,139,0,0" VerticalAlignment="Top" Width="120" />
-        <Label Content="choose last station:" HorizontalAlignment="Left" Margin="96,181,0,0" VerticalAlignment="Top" Width="132"/>
+        <Label Content="choose last station:" HorizontalAlignment="Left" Margin="96,181,0,0" VerticalAlignment="Top" Width="182"/>
         <ComboBox x:Name="cb_last_station" HorizontalAlignment="Left" Margin="408,181,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>

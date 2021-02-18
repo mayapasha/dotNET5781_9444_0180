@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
-        Title="ChooseStationWindow" Height="450" Width="800">
+        Title="ChooseStationWindow" Height="450" Width="800" Background="#FFBDF7F5">
     <Grid>
-        <ListBox x:Name="lb_stations" HorizontalAlignment="Left"  Height="332" Margin="31,47,0,0" VerticalAlignment="Top" Width="727" MouseDoubleClick="lb_stations_MouseDoubleClick"    />
-        <Label  Content="click double on the station that you want to add" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="325" Height="32"/>
+        <ListBox x:Name="lb_stations" HorizontalAlignment="Left"  Height="332" Margin="31,47,0,0" VerticalAlignment="Top" Width="727" MouseDoubleClick="lb_stations_MouseDoubleClick " Background="#FFFFFFD0"/>
+        <Label  Content="click double on the station that you want to add" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="727" Height="32"/>
     </Grid>
 </Window>

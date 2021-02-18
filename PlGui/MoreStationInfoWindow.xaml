@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
-        Title="MoreStationInfoWindow" Height="450" Width="320">
+        Title="MoreStationInfoWindow" Height="450" Width="320" Background="#FFFFC19D">
     <Grid>
-        <ListBox x:Name="lb_lineOfStation" HorizontalAlignment="Left" Height="241" Margin="28,147,0,0" VerticalAlignment="Top" Width="258"/>
+        <ListBox x:Name="lb_lineOfStation" Background="#FFE1FFFC" HorizontalAlignment="Left" Height="241" Margin="28,147,0,0" VerticalAlignment="Top" Width="258"/>
         <Label x:Name="l_station_name" HorizontalAlignment="Left" Height="43" Margin="105,32,0,0" VerticalAlignment="Top" Width="181"/>
         <Label x:Name="l_station_code"  HorizontalAlignment="Left" Margin="105,80,0,0" VerticalAlignment="Top" Height="42" Width="181"/>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="90" Height="42" FontSize="15"/>
-        <Label Content="Code:" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="53" FontSize="15"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="90" Height="42" />
+        <Label Content="Code:" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="90" />
     </Grid>
 </Window>
