@@ -8,20 +8,8 @@ namespace DalApi
 {
     public interface IDL
     {
-        #region user
-        DO.User Get_User(string Username);
-        IEnumerable<DO.User> Get_All_Users();
-        void Add_User(DO.User user);
-        void Delete_User(DO.User user);
-        #endregion
 
-        #region bus
-        DO.Bus Get_Bus(int license);
-        IEnumerable<DO.Bus> Get_All_Buses();
-        void Add_Bus(DO.Bus bus);
-        void Delete_Bus(DO.Bus bus);
-        void Update_Bus(DO.Bus bus);
-        #endregion
+
 
         #region line
         DO.Line Get_Line(int id);
@@ -40,10 +28,10 @@ namespace DalApi
         #endregion
 
         #region line station
-        DO.LineStation Get_LineStation(int linestationIndex);
+        //DO.LineStation Get_LineStation(int linestationIndex);
         IEnumerable<DO.LineStation> Get_All_LineStations();
         void Add_LineStation(DO.LineStation lineStation);
-        void Delete_LineStation(DO.LineStation lineStation);
+        // void Delete_LineStation(DO.LineStation lineStation);
         void Update_LineStation(DO.LineStation lineStation);
         #endregion
         #region adjacent stations

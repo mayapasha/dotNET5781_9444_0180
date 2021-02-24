@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <Station>
+<Code>0</Code>
+<Name>Masof riding</Name>
+<Longitude>34.0800509186834</Longitude>
+<Lattitude>33.1111896826006</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>1</Code>
+<Name>Aven gvirol/ shderot rokah</Name>
+<Longitude>34.5786551429791</Longitude>
+<Lattitude>31.1391661438808</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>2</Code>
+<Name>Shay agnon/ shderot levi eshkol</Name>
+<Longitude>34.4614520559374</Longitude>
+<Lattitude>32.4104832163129</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>3</Code>
+<Name>Sde dov/shderot levi eshkol</Name>
+<Longitude>34.0132834635737</Longitude>
+<Lattitude>31.5571681170991</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>4</Code>
+<Name>Eren school/ Yehuda borla</Name>
+<Longitude>35.1690748246243</Longitude>
+<Lattitude>32.39633655669</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>5</Code>
+<Name>Yehuda borla/ Harav hauzner</Name>
+<Longitude>34.3211737425631</Longitude>
+<Lattitude>31.0399063599016</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>6</Code>
+<Name>Ainstain/shderot levi eshkol </Name>
+<Longitude>34.6230219573821</Longitude>
+<Lattitude>32.0626817318437</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>7</Code>
+<Name>Haoniversita/ haim lavnon</Name>
+<Longitude>34.2277270975652</Longitude>
+<Lattitude>32.3202445069422</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>8</Code>
+<Name>haim lavnon/ kalchkin</Name>
+<Longitude>35.1436245089134</Longitude>
+<Lattitude>32.5724029038439</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>9</Code>
+<Name>shderot kakal/ ofakim</Name>
+<Longitude>34.1768420710121</Longitude>
+<Lattitude>31.021952519576</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>10</Code>
+<Name>afka/shderot kakal</Name>
+<Longitude>34.049812336848</Longitude>
+<Lattitude>31.7310679784189</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>11</Code>
+<Name>machlef kakal/shderot kakal</Name>
+<Longitude>35.022104509837</Longitude>
+<Lattitude>32.3336062881321</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>12</Code>
+<Name>shderot kakal/bnei efraim</Name>
+<Longitude>34.0308810597429</Longitude>
+<Lattitude>32.2883480011431</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>13</Code>
+<Name>shlonski/bnei efraim</Name>
+<Longitude>34.3244161968699</Longitude>
+<Lattitude>31.0576493419044</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>14</Code>
+<Name>shlonski/kehilat venezia</Name>
+<Longitude>34.7770611127732</Longitude>
+<Lattitude>32.7886880287848</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>15</Code>
+<Name>pinchas rozen/ shlonski</Name>
+<Longitude>34.1833592326303</Longitude>
+<Lattitude>31.4919870012868</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>16</Code>
+<Name>pinchas rozen/ kehilat yasi</Name>
+<Longitude>35.089680908569</Longitude>
+<Lattitude>31.768001954196</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>17</Code>
+<Name>mivza kadesh/ raul velemberg</Name>
+<Longitude>34.0406003134514</Longitude>
+<Lattitude>31.8927542390734</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>18</Code>
+<Name>tachanat rakevet bnei brak/ mivza kadesh</Name>
+<Longitude>34.903265490431</Longitude>
+<Lattitude>33.2260585967573</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>19</Code>
+<Name>derech ben guryon/derech sheshet hayamim</Name>
+<Longitude>34.1098075220873</Longitude>
+<Lattitude>31.7731374590067</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>20</Code>
+<Name>ulamei modi'in</Name>
+<Longitude>34.3449270017189</Longitude>
+<Lattitude>31.4946883196452</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>21</Code>
+<Name>derech ben guryon/ derech zabutinski</Name>
+<Longitude>34.4809383424376</Longitude>
+<Lattitude>32.1325229508954</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>22</Code>
+<Name>derech ben guryon/ magadim</Name>
+<Longitude>34.378920665001</Longitude>
+<Lattitude>32.7169626418114</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>23</Code>
+<Name>derech ben guryon/ shalishut</Name>
+<Longitude>34.5995086117645</Longitude>
+<Lattitude>31.0499629329191</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>24</Code>
+<Name>haroe/ derech ben guryon</Name>
+<Longitude>34.0121217854377</Longitude>
+<Lattitude>32.9022571583289</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>25</Code>
+<Name>haroe/yerushalaim</Name>
+<Longitude>34.6741808497692</Longitude>
+<Lattitude>31.8155585739834</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>26</Code>
+<Name>haroe/ hibat ziyon</Name>
+<Longitude>35.1069537490173</Longitude>
+<Lattitude>32.7413953813917</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>27</Code>
+<Name>haroe/barkay</Name>
+<Longitude>35.0516779323349</Longitude>
+<Lattitude>32.8214918264288</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>28</Code>
+<Name>haroe/ shderot yerushalaim</Name>
+<Longitude>34.2505039130573</Longitude>
+<Lattitude>32.1198246393445</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>29</Code>
+<Name>haroe/ truman</Name>
+<Longitude>34.705023227029</Longitude>
+<Lattitude>33.1207410229001</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>30</Code>
+<Name>haroe/ pinchas rotenberg</Name>
+<Longitude>35.1662802120514</Longitude>
+<Lattitude>31.8268004319755</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>31</Code>
+<Name>haroe/ derech izhak rabin</Name>
+<Longitude>35.1514623081086</Longitude>
+<Lattitude>31.5367719430648</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>32</Code>
+<Name>raziel/hamea veachat</Name>
+<Longitude>35.0374614768836</Longitude>
+<Lattitude>32.7487397459097</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>33</Code>
+<Name>hapark haleumi/ san martino</Name>
+<Longitude>34.6647617341321</Longitude>
+<Lattitude>33.1475810523832</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>34</Code>
+<Name>biet sefer netaim/ yahadut filadelfia</Name>
+<Longitude>34.6482229075619</Longitude>
+<Lattitude>31.3013711792423</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>35</Code>
+<Name>azriel/givati</Name>
+<Longitude>35.1171186333136</Longitude>
+<Lattitude>31.5104183402427</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>36</Code>
+<Name>kikar harav pardes/ shalem</Name>
+<Longitude>35.1016459663872</Longitude>
+<Lattitude>32.4188095164107</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>37</Code>
+<Name>iztadion vinter/ echad ha'am</Name>
+<Longitude>34.0364997696301</Longitude>
+<Lattitude>33.1442589831279</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>38</Code>
+<Name>iztadion vinter</Name>
+<Longitude>34.2148562426748</Longitude>
+<Lattitude>32.26295069473</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>39</Code>
+<Name>amidar ramat gan</Name>
+<Longitude>34.2932609008128</Longitude>
+<Lattitude>31.2420710020429</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>40</Code>
+<Name>hatfuzot/ komemiut</Name>
+<Longitude>34.6305693057508</Longitude>
+<Lattitude>31.0092257649215</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>41</Code>
+<Name>ezel/ hamachteret</Name>
+<Longitude>34.9211067513195</Longitude>
+<Lattitude>32.0195405523384</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>42</Code>
+<Name>ezel/ ben eliezer</Name>
+<Longitude>34.7825080204674</Longitude>
+<Lattitude>31.6738085588318</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>43</Code>
+<Name>ben eliezer/ ezel</Name>
+<Longitude>34.4937429227371</Longitude>
+<Lattitude>31.9100431478163</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>44</Code>
+<Name>pinchas rotenberg/ ben eliezer</Name>
+<Longitude>34.6141068880512</Longitude>
+<Lattitude>31.2670632483284</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>45</Code>
+<Name>hayarden/pinchas</Name>
+<Longitude>34.9109179635117</Longitude>
+<Lattitude>32.257992628104</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>46</Code>
+<Name>hayarden/ezel</Name>
+<Longitude>34.8983528385397</Longitude>
+<Lattitude>32.9105178337593</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>47</Code>
+<Name>negba/hayarden</Name>
+<Longitude>34.2918180416766</Longitude>
+<Lattitude>32.6836639853584</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>48</Code>
+<Name>negba/haroe</Name>
+<Longitude>34.639419231489</Longitude>
+<Lattitude>31.1243381435631</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+<Station>
+<Code>49</Code>
+<Name>arlozerov/ bialik</Name>
+<Longitude>35.0583451188441</Longitude>
+<Lattitude>32.4730587437623</Lattitude>
+<Is_Active>True</Is_Active>
+</Station>
+
+</ArrayOfStations>

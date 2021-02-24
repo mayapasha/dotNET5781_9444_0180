@@ -15,16 +15,16 @@ namespace BL
         public string Find_LineStation_Name(int SCode)
         {
             BO.Station s = new Station();
-               s= Get_All_Stations().ToList().Find(item => item.Code == SCode);
+            s = Get_All_Stations().ToList().Find(item => item.Code == SCode);
             return s.Name;
-            
+
         }
         public IEnumerable<BO.LineTrip> Find_All_LineTrip_Of_Line(int LId)
         {
             IEnumerable<BO.LineTrip> ltBO = Get_All_LineTrips().ToList().Where(item => item.LineId == LId).Select(item => item).ToList();
             return ltBO;
         }
-        
+
         void IBL.AddStationToLine(BO.Station s, BO.Line l, BO.LineStation ls)
         {
             foreach (var item in l.List_Of_LineStation)
@@ -58,7 +58,7 @@ namespace BL
                     dl.Update_LineStation(new DO.LineStation { Is_Active = true, LineId = item.LineId, LineStationIndex = item.LineStationIndex, NextStation = item.NextStation, PrevStation = item.PrevStation, Station = item.Station });
                 }
                 counter++;
-               
+
             }
 
             dl.Add_LineStation(LineStationBoDoAdapter(lsnew));
@@ -71,187 +71,7 @@ namespace BL
                    where item1.Station == stationBO.Code
                    select new BO.Line { Area = item.Area, Code = item.Code, LastStation = item.LastStation, FirstStation = item.FirstStation, Id = item.Id, List_Of_LineStation = item.List_Of_LineStation };
         }
-        #region user
-        /// <summary>
-        /// the func transform user type do to user type bo
-        /// </summary>
-        /// <param name="userDO"></param>
-        /// <returns> userBO </returns>
-        BO.User UsertDoBoAdapter(DO.User userDO)
-        {
-            BO.User userBO = new BO.User();
 
-            string name = userDO.UserName;
-            try
-            {
-                userDO = dl.Get_User(name);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-            userDO.CopyPropertiesTo(userBO);
-
-            return userBO;
-        }
-        DO.User UsertBoDoAdapter(BO.User userBO)
-        {
-            DO.User userDO = new DO.User();
-
-            string name = userBO.Name;
-            //try
-            //{
-            //    userBO = dl.Get_User(name);
-            //}
-            //catch (BO.Item_not_found_Exception ex)
-            //{
-            //    throw new DO.Exceptions.Item_not_found_Exception(ex.Message);
-            //}
-            userBO.CopyPropertiesTo(userDO);
-
-            return userDO;
-        }
-        public void Add_User(BO.User user)
-        {
-            try
-            {
-                DO.User userDO = UsertBoDoAdapter(user);
-                dl.Add_User(userDO);
-            }
-            catch (DO.Add_Existing_Item_Exception ex)
-            {
-                throw new BO.Exceptions.Add_Existing_Item_Exception(ex.Message);
-            }
-        }
-
-        public void Delete_user(BO.User user)
-        {
-            try
-            {
-                DO.User userDO = UsertBoDoAdapter(user);
-                dl.Delete_User(userDO);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-        }
-
-        public IEnumerable<BO.User> Get_All_Users()
-        {
-            return from item in dl.Get_All_Users()
-                   select UsertDoBoAdapter(item);
-        }
-
-        public BO.User Get_User(string username)
-        {
-            DO.User userDO;
-            try
-            {
-                userDO = dl.Get_User(username);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-            return UsertDoBoAdapter(userDO);
-        }
-
-
-        #endregion
-        #region bus
-        BO.Bus BusDoBoAdapter(DO.Bus BusDO)
-        {
-            BO.Bus BusBO = new BO.Bus();
-
-            int license = BusDO.LicenseNum;
-            try
-            {
-                BusDO = dl.Get_Bus(license);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-            BusDO.CopyPropertiesTo(BusBO);
-
-            return BusBO;
-        }
-        DO.Bus BusBoDoAdapter(BO.Bus BusBO)
-        {
-            DO.Bus BusDO = new DO.Bus();
-
-            int license = BusBO.LicenseNum;
-
-            BusBO.CopyPropertiesTo(BusDO);
-
-            return BusDO;
-        }
-        public Bus Get_Bus(int license)
-        {
-            DO.Bus busDO;
-            try
-            {
-                busDO = dl.Get_Bus(license);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-            return BusDoBoAdapter(busDO);
-        }
-
-        public IEnumerable<Bus> Get_All_Buses()
-        {
-            return from item in dl.Get_All_Buses()
-                   select BusDoBoAdapter(item);
-        }
-
-        public void Add_Bus(BO.Bus bus)
-        {
-            try
-            {
-                DO.Bus busDO = BusBoDoAdapter(bus);
-                dl.Add_Bus(busDO);
-            }
-            catch (DO.Add_Existing_Item_Exception ex)
-            {
-                throw new BO.Exceptions.Add_Existing_Item_Exception(ex.Message);
-            }
-        }
-
-        public void Delete_Bus(BO.Bus bus)
-        {
-            try
-            {
-                DO.Bus busDO = BusBoDoAdapter(bus);
-                dl.Delete_Bus(busDO);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-        }
-
-        public void update_Bus(BO.Bus bus)
-        {
-            try
-            {
-                DO.Bus busDO = BusBoDoAdapter(bus);
-
-                dl.Update_Bus(busDO);
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-        }
-
-
-        #endregion
         #region line
         BO.Line LineDoBoAdapter(DO.Line lineDO)
         {
@@ -330,7 +150,7 @@ namespace BL
                 BO.LineStation lSLast = new BO.LineStation { LineStationIndex = 1, Distance = 0, LineId = line.Code, PrevStation = line.FirstStation, Station = line.LastStation, NextStation = -1, Time = new TimeSpan(0, 0, 0) };
                 lSLast.Name = Find_LineStation_Name(lSLast.Station);
                 Add_LineStaton(lSLast);
-                DO.Line lineDO = new DO.Line { Area= (DO.Enums.Areas)line.Area, LastStation=line.LastStation, Code=line.Code, FirstStation=line.FirstStation, Id=line.Id, Is_Active=true };
+                DO.Line lineDO = new DO.Line { Area = (DO.Enums.Areas)line.Area, LastStation = line.LastStation, Code = line.Code, FirstStation = line.FirstStation, Id = line.Id, Is_Active = true };
                 dl.Add_Line(lineDO);
             }
             catch (DO.Add_Existing_Item_Exception ex)
@@ -383,7 +203,7 @@ namespace BL
         }
         #endregion
         #region line station
-        BO.LineStation LineStationDoBoAdapter(DO.LineStation lineStationDO)
+        /*BO.LineStation LineStationDoBoAdapter(DO.LineStation lineStationDO)
         {
             BO.LineStation lineStationBO = new BO.LineStation();
 
@@ -399,7 +219,7 @@ namespace BL
             lineStationDO.CopyPropertiesTo(lineStationBO);
 
             return lineStationBO;
-        }
+        }*/
         DO.LineStation LineStationBoDoAdapter(BO.LineStation lineStationBO)
         {
             DO.LineStation lineStationDO = new DO.LineStation();
@@ -410,22 +230,22 @@ namespace BL
 
             return lineStationDO;
         }
-        public LineStation Get_LineStation(int lineStationIndex)
-        {
-            try
-            {
-                BO.LineStation b = LineStationDoBoAdapter(dl.Get_LineStation(lineStationIndex));
-                BO.AdjacentStations a = Get_AdjacentStation(b.Station, b.NextStation);
-                b.Distance = a.Distance;
-                b.Time = a.Time;
-                b.Name = Find_LineStation_Name(b.Station);
-                return b;
-            }
-            catch (DO.Item_not_found_Exception ex)
-            {
-                throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
-            }
-        }
+        /*  public LineStation Get_LineStation(int lineStationIndex)
+          {
+              try
+              {
+                  BO.LineStation b = LineStationDoBoAdapter(dl.Get_LineStation(lineStationIndex));
+                  BO.AdjacentStations a = Get_AdjacentStation(b.Station, b.NextStation);
+                  b.Distance = a.Distance;
+                  b.Time = a.Time;
+                  b.Name = Find_LineStation_Name(b.Station);
+                  return b;
+              }
+              catch (DO.Item_not_found_Exception ex)
+              {
+                  throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
+              }
+          }*/
 
         public IEnumerable<LineStation> Get_All_LineStations()
         {
@@ -467,7 +287,7 @@ namespace BL
         {
             try
             {
-                DO.LineStation lineStationDO = new DO.LineStation { Is_Active = true, LineId=lineStation.LineId, LineStationIndex=lineStation.LineStationIndex, NextStation=lineStation.NextStation, PrevStation=lineStation.PrevStation, Station=lineStation.Station };
+                DO.LineStation lineStationDO = new DO.LineStation { Is_Active = true, LineId = lineStation.LineId, LineStationIndex = lineStation.LineStationIndex, NextStation = lineStation.NextStation, PrevStation = lineStation.PrevStation, Station = lineStation.Station };
                 dl.Add_LineStation(lineStationDO);
             }
             catch (DO.Add_Existing_Item_Exception ex)
@@ -476,7 +296,7 @@ namespace BL
             }
         }
 
-        public void Delete_LineStation(LineStation lineStation)
+        /*public void Delete_LineStation(LineStation lineStation)
         {
             try
             {
@@ -487,7 +307,7 @@ namespace BL
             {
                 throw new BO.Exceptions.Item_not_found_Exception(ex.Message);
             }
-        }
+        }*/
 
         public void update_LineStation(LineStation lineStation)
         {
@@ -579,15 +399,15 @@ namespace BL
         }
         #endregion
         #region AdjacentStations
-        public BO.AdjacentStations AdjacentStationDoToBo(DO.AdjacentStations a)
-        {
-            BO.AdjacentStations b = new AdjacentStations();
-            b.Distance = a.Distance;
-            b.Station1 = a.Station1;
-            b.Station2 = a.Station2;
-            b.Time = a.Time;
-            return b;
-        }
+        /* public BO.AdjacentStations AdjacentStationDoToBo(DO.AdjacentStations a)
+         {
+             BO.AdjacentStations b = new AdjacentStations();
+             b.Distance = a.Distance;
+             b.Station1 = a.Station1;
+             b.Station2 = a.Station2;
+             b.Time = a.Time;
+             return b;
+         }*/
         public DO.AdjacentStations AdjacentStationBoToDo(BO.AdjacentStations a)
         {
             DO.AdjacentStations b = new DO.AdjacentStations();
@@ -667,7 +487,7 @@ namespace BL
 
         }
 
-       
+
         #endregion
     }
 
