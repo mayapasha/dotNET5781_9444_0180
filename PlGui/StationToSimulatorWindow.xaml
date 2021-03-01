@@ -1,0 +1,13 @@
+﻿<Window x:Class="PlGui.StationToSimulatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlGui"
+        mc:Ignorable="d"
+        Title="StationToSimulatorWindow" Height="170.968" Width="225.806">
+    <Grid>
+        <ComboBox Name="cbStations" HorizontalAlignment="Left" Margin="27,35,0,0" VerticalAlignment="Top" Width="167" Height="70" SelectionChanged="cbStations_SelectionChanged"/>
+
+    </Grid>
+</Window>

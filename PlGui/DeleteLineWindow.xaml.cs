@@ -46,6 +46,11 @@ namespace PlGui
                                                  select new BO.LineStation { LineId = item1.LineId, Time = item1.Time, Station = item1.Station, PrevStation = item1.PrevStation, NextStation = item1.NextStation, LineStationIndex = item1.LineStationIndex, Distance = item1.Distance, Name = item1.Name };
                 // IEnumerable<BO.>
                 lbo.List_Of_LineStation = ls.ToList();
+                foreach (var item in lbo.List_Of_LineStation)
+                {
+                    MainWindow.bl.Delete_LineStation(item);
+                }
+
                 //BO.Line l_delete= MainWindow.bl.Get_Line(lbo.Id);
                 MainWindow.bl.Delete_Line(lbo);
                 LineInfoWindow.lines.Remove(l);

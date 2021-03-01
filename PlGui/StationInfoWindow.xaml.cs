@@ -44,18 +44,7 @@ namespace PlGui
                 MessageBox.Show(ex.Message);
             }
         }
-       /* private void update_OC_Stations()
-        {
-            stations = new ObservableCollection<PO.Station>();
-            IEnumerable<PO.Station> s = from item in MainWindow.bl.Get_All_Stations()
-                                        select new PO.Station { Code = item.Code, Name = item.Name, Longitude = item.Longitude, Lattitude = item.Lattitude } PO.SwitchObjects.StationBoToPo(item);
-            stations = (ObservableCollection<PO.Station>)s;
-            foreach (var item in s)
-            {
-                stations.Add(item);
-            }
-            lb_stations.ItemsSource = stations;
-        } */
+
 
         private void b_add_station_Click(object sender, RoutedEventArgs e)
         {

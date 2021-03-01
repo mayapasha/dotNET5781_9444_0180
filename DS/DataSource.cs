@@ -227,33 +227,7 @@ namespace DS
                 }
             }
 
-            /*
-            for (int i = 0; i < ListStations.Count; i++)
-            {
-                for (int j = 0; j < ListStations.Count; j++)
-                {
-                    if (i == j)
-                    {
-                        ;
-                    }
-                    else
-                    {
-                        DO.AdjacentStations a = new AdjacentStations();
-                        a.Station1 = ListStations[i].Code;
-                        a.Station2 = ListStations[j].Code;
-                        double x = ListStations[j].Lattitude - ListStations[i].Lattitude;
-                        double y = ListStations[j].Longitude - ListStations[i].Longitude;
-                        x = Math.Pow(x, 2);
-                        y = Math.Pow(y, 2);
-                        a.Distance = Math.Sqrt(x + y);
-                        a.Time = new TimeSpan(0, r.Next(0, 15), r.Next(0, 59));
-                        a.Is_Active = true;
-                        ListAdjacentStations.Add(a);
-                    }
-                }
-            }
-            
-            */
+
             #endregion
 
             #region  listLineStation
@@ -1244,6 +1218,24 @@ namespace DS
                 },
                 new LineTrip
                 {
+                    LineId=ListLines[1].Id,
+                    Id=2,
+                    //Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(22,30,0),
+                   // FinishAt=new TimeSpan(16,0,0)
+                   Is_Active=true
+                },
+                new LineTrip
+                {
+                    LineId=ListLines[1].Id,
+                    Id=3,
+                    //Frequency=new TimeSpan(0,30,0),
+                    StartAt=new TimeSpan(23,0,0),
+                   // FinishAt=new TimeSpan(16,0,0)
+                   Is_Active=true
+                },
+                new LineTrip
+                {
                     LineId=ListLines[2].Id,
                     Id=1,
                     //Frequency=new TimeSpan(2,0,0),
@@ -1298,6 +1290,15 @@ namespace DS
                 },
                 new LineTrip
                 {
+                    LineId=ListLines[6].Id,
+                    Id=2,
+                    //Frequency=new TimeSpan(0,5,0),
+                    StartAt=new TimeSpan(23,10,0),
+                    //FinishAt=new TimeSpan(13,0,0)
+                    Is_Active=true
+                },
+                new LineTrip
+                {
                     LineId=ListLines[7].Id,
                     Id=1,
                    // Frequency=new TimeSpan(1,0,0),
@@ -1341,6 +1342,9 @@ namespace DS
                     //FinishAt=new TimeSpan(4,0,0)
                     Is_Active=true
                 }
+
+
+
             };
             #endregion
         }

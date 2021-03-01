@@ -31,7 +31,7 @@ namespace DalApi
         //DO.LineStation Get_LineStation(int linestationIndex);
         IEnumerable<DO.LineStation> Get_All_LineStations();
         void Add_LineStation(DO.LineStation lineStation);
-        // void Delete_LineStation(DO.LineStation lineStation);
+        void Delete_LineStation(DO.LineStation lineStation);
         void Update_LineStation(DO.LineStation lineStation);
         #endregion
         #region adjacent stations

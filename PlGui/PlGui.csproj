@@ -79,8 +79,14 @@
     <Compile Include="PO\LineTrip.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\SwitchObjects.cs" />
+    <Compile Include="simulator.xaml.cs">
+      <DependentUpon>simulator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StationInfoWindow.xaml.cs">
       <DependentUpon>StationInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StationToSimulatorWindow.xaml.cs">
+      <DependentUpon>StationToSimulatorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateLineWindow.xaml.cs">
       <DependentUpon>UpdateLineWindow.xaml</DependentUpon>
@@ -142,7 +148,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="simulator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StationInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StationToSimulatorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -79,9 +79,11 @@ namespace PlGui
             b.LastStation = s.Code;
             try
             {
-                BO.Line LBO = new BO.Line { Area = b.Area, Code = b.Code, FirstStation = b.FirstStation, LastStation = b.LastStation }; 
+                BO.Line LBO = new BO.Line { Area = b.Area, Code = b.Code, FirstStation = b.FirstStation, LastStation = b.LastStation };
                 MainWindow.bl.Add_Line(LBO);
-               
+                IEnumerable<PO.LineStation> lsOfNewLine = MainWindow.bl.Get_All_LineStations().ToList().Where(ls => ls.LineId == b.Id).Select(item1 => new PO.LineStation { LineId = item1.LineId, Time = item1.Time, Station = item1.Station, PrevStation = item1.PrevStation, NextStation = item1.NextStation, LineStationIndex = item1.LineStationIndex, Distance = item1.Distance, Name = item1.Name });
+                foreach (var item in lsOfNewLine) { b.List_Of_Line_Stations.Add(item); }
+                LineInfoWindow.lines.Add(b);
             }
             catch (BO.Exceptions.Add_Existing_Item_Exception ex)
             {

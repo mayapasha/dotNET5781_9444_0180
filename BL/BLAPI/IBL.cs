@@ -26,7 +26,7 @@ namespace BLAPI
         //  BO.LineStation Get_LineStation(int lineStationIndex);
         IEnumerable<BO.LineStation> Get_All_LineStations();
         void Add_LineStaton(BO.LineStation lineStation);
-        // void Delete_LineStation(BO.LineStation lineStaion);
+        void Delete_LineStation(BO.LineStation lineStaion);
         void update_LineStation(BO.LineStation lineStation);
         #endregion
 
@@ -46,5 +46,7 @@ namespace BLAPI
         #region line trip
         IEnumerable<BO.LineTrip> Get_All_LineTrips();
         #endregion
+        IEnumerable<BO.LineTiming> GetLineTiminig(BO.Station s);
+        IEnumerable<BO.LineTiming> GetLineTimingForStation(BO.Station stationBO, TimeSpan currentTime);
     }
 }

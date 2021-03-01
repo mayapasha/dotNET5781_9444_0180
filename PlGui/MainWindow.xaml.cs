@@ -45,5 +45,10 @@ namespace PlGui
             LineTripInfoWindow lineTripInfoWindow = new LineTripInfoWindow();
             lineTripInfoWindow.Show();
         }
+        private void BSimulator_Click(object sender, RoutedEventArgs e)
+        {
+            StationToSimulatorWindow stationToSimulatorWindow = new StationToSimulatorWindow();
+            stationToSimulatorWindow.Show();
+        }
     }
 }

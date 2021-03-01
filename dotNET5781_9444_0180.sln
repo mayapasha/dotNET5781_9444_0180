@@ -19,9 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{6F7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD0C5071-7852-44A8-B722-794F111BB913}"
 	ProjectSection(SolutionItems) = preProject
-		AdjacentStationsXML.xml = AdjacentStationsXML.xml
-		Config.xml = Config.xml
-		StationXML.xml = StationXML.xml
+		bin\xml\AdjacentStationsXML.xml = bin\xml\AdjacentStationsXML.xml
+		bin\Config.xml = bin\Config.xml
+		bin\xml\LineStationXML.xml = bin\xml\LineStationXML.xml
+		bin\xml\LineTripXML.xml = bin\xml\LineTripXML.xml
+		bin\xml\LineXML.xml = bin\xml\LineXML.xml
+		bin\xml\StationXML.xml = bin\xml\StationXML.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlGui", "PlGui\PlGui.csproj", "{ACD13D1C-DC5A-49FF-BFC2-C7C37103C118}"
